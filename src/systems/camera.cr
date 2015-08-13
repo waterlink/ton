@@ -10,5 +10,19 @@ module Ton
         return
       end
     end
+
+    # Follow player by default
+    def update
+      World.each.camera do |camera|
+        World.each.player do |player|
+          player.position.bind do |position|
+            camera.position!.x = position.x
+            camera.position!.y = position.y
+          end
+        end
+
+        return
+      end
+    end
   end
 end
