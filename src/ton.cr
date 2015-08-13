@@ -1,3 +1,6 @@
+require "./rectangle"
+
+require "./constants"
 require "./application"
 
 require "./system"
