@@ -1,5 +1,19 @@
 module Ton
   new_system Camera do
+    UP = 65
+    DOWN = 66
+    LEFT = 68
+    RIGHT = 67
+
+    CONTROLS = {
+      UP => (-> (c : Entity) { c.position!.y -= 1; nil }),
+      DOWN => (-> (c : Entity) { c.position!.y += 1; nil }),
+      LEFT => (-> (c : Entity) { c.position!.x -= 1; nil }),
+      RIGHT => (-> (c : Entity) { c.position!.x += 1; nil }),
+    }
+
+    NULL_CONTROL = -> (c : Entity) { nil }
+
     def draw
       World.each.camera do |camera|
         frontend.highlight(
@@ -11,16 +25,12 @@ module Ton
       end
     end
 
-    # Follow player by default
     def update
-      World.each.camera do |camera|
-        World.each.player do |player|
-          player.position.bind do |position|
-            camera.position!.x = position.x
-            camera.position!.y = position.y
-          end
-        end
+    end
 
+    def keypress(key)
+      World.each.camera do |camera|
+        CONTROLS.fetch(key, NULL_CONTROL).call(camera)
         return
       end
     end

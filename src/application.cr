@@ -14,6 +14,7 @@ module Ton
     end
 
     def frame
+      keypress(frontend.get_key)
       update
       draw
       wait_for_frame
@@ -26,6 +27,11 @@ module Ton
     def draw
       systems.each &.draw
       frontend.refresh
+    end
+
+    def keypress(key)
+      return unless key
+      systems.each &.keypress(key.not_nil!)
     end
 
     def wait_for_frame

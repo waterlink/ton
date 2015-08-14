@@ -24,6 +24,11 @@ module Ton
       def refresh
         window.refresh
       end
+
+      def get_key
+        ch = window.getch
+        return ch if ch > -1
+      end
     end
   end
 end

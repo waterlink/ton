@@ -10,6 +10,9 @@ module Ton
     def draw
     end
 
+    def keypress(key)
+    end
+
     getter frontend
     def initialize(@frontend)
     end

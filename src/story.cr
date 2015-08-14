@@ -1,6 +1,7 @@
 module Ton
   player = Entity.new
   player.player = Components::Player.new(true)
+  player.character = Components::Character.new(true)
   player.tile = Components::Tile.new("@")
   player.position = Components::Position.new(15, 15)
 
