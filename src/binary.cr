@@ -8,10 +8,16 @@ module Ton
 
   app = Application.new(FRONTEND, FPS, [
     Systems::Display,
+    Systems::Menu,
 
     Systems::Camera,
     Systems::CharacterSelect,
+    Systems::FrontendRefresh,
   ])
 
-  app.start
+  begin
+    app.start
+  ensure
+    FRONTEND.close
+  end
 end

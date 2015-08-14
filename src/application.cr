@@ -28,7 +28,6 @@ module Ton
 
     def draw
       systems.each &.draw
-      frontend.refresh
     end
 
     def keypress(key)

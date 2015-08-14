@@ -13,6 +13,9 @@ lib LibCurses
   fun noecho : Int32
   fun nonl : Int32
   fun start_color : Int32
+  fun init_pair(p : Int16, f : Int16, b : Int16) : Int32
+  fun color_set(p : Int16, opts : Void*) : Int32
+  fun wcolor_set(w : Window, p : Int16, opts : Void*) : Int32
   fun move(x : Int32, y : Int32) : Int32
   fun wmove(w : Window, x : Int32, y : Int32) : Int32
   fun addstr(s : UInt8*) : Int32

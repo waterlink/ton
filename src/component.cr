@@ -3,10 +3,15 @@ module Ton
     getter entity
     def entity=(entity)
       @entity = entity
-      register
+      if entity
+        register
+      else
+        deregister
+      end
     end
 
     abstract def register
+    abstract def deregister
   end
 
   macro new_component(name, *props)
@@ -18,6 +23,10 @@ module Ton
 
         def register
           {{name.id}}Registry.register(self)
+        end
+
+        def deregister
+          {{name.id}}Registry.deregister(self)
         end
 
         class Just

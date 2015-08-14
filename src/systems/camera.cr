@@ -1,20 +1,17 @@
 module Ton
   new_system Camera do
-    UP = 65
-    DOWN = 66
-    LEFT = 68
-    RIGHT = 67
-
     CONTROLS = {
-      UP => (-> (c : Entity) { c.position!.y -= 1; nil }),
-      DOWN => (-> (c : Entity) { c.position!.y += 1; nil }),
-      LEFT => (-> (c : Entity) { c.position!.x -= 1; nil }),
-      RIGHT => (-> (c : Entity) { c.position!.x += 1; nil }),
+      ControlConstants::UP => (-> (c : Entity) { c.position!.y -= 1; nil }),
+      ControlConstants::DOWN => (-> (c : Entity) { c.position!.y += 1; nil }),
+      ControlConstants::LEFT => (-> (c : Entity) { c.position!.x -= 1; nil }),
+      ControlConstants::RIGHT => (-> (c : Entity) { c.position!.x += 1; nil }),
     }
 
     NULL_CONTROL = -> (c : Entity) { nil }
 
     def draw
+      return if static?
+
       World.each.camera do |camera|
         frontend.highlight(
           DisplayConstants::WIDTH / 2,
@@ -29,10 +26,19 @@ module Ton
     end
 
     def keypress(key)
+      return if static?
+
       World.each.camera do |camera|
         CONTROLS.fetch(key, NULL_CONTROL).call(camera)
-        return
       end
+    end
+
+    def static?
+      is_static = false
+      World.each.static_camera do |c|
+        is_static = true
+      end
+      is_static
     end
   end
 end

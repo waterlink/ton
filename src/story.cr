@@ -8,4 +8,18 @@ module Ton
   camera = Entity.new
   camera.camera = Components::Camera.new(true)
   camera.position = Components::Position.new(5, 7)
+
+  menu = Entity.new
+  menu.character_selection_menu = Components::CharacterSelectionMenu.new(true)
+  menu.menu = Components::Menu.new([
+    Components::MenuItem.new("Move", true, nil),
+    Components::MenuItem.new("Act", false, nil),
+    Components::MenuItem.new("Defend", false, nil),
+    Components::MenuItem.new("Wait", false, nil),
+    Components::MenuItem.new("Cancel", false, [
+      -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
+    ]),
+  ])
+  menu.active_menu = Components::ActiveMenu.new(true)
+  menu.active_window = Components::ActiveWindow.new(true)
 end

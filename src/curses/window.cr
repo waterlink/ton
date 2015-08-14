@@ -14,6 +14,10 @@ struct Curses::Window
     LibCurses.wmove self, x, y
   end
 
+  def set_color(p)
+    LibCurses.wcolor_set(self, p.to_i16, nil)
+  end
+
   def addstr(str)
     LibCurses.waddstr self, str
   end

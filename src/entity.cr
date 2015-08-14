@@ -13,7 +13,7 @@ module Ton
           {{args[0]}}.entity = self
           @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::Just.new({{args.argify}})
         else
-          {{args[0]}}.entity = nil
+          @_{{original_name.id}}.not_nil!.unwrap!.entity = nil
           @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::None.new
         end
 

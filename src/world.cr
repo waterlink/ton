@@ -39,6 +39,10 @@ module Ton
     def register(item)
       items << item
     end
+
+    def deregister(item)
+      items.delete(item)
+    end
   end
 
   World = WorldClass.new

@@ -41,6 +41,14 @@ module Curses
     LibCurses.start_color
   end
 
+  def init_pair(p, f, b)
+    LibCurses.init_pair(p.to_i16, f.to_i16, b.to_i16)
+  end
+
+  def set_color(p)
+    LibCurses.color_set(p.to_i16, nil)
+  end
+
   def lines
     LibCurses.lines
   end
