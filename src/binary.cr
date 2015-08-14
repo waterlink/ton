@@ -6,9 +6,12 @@ module Ton
   FPS = 30
   FRONTEND = Frontend::Driver.new
 
-  Application.new(FRONTEND, FPS, [
+  app = Application.new(FRONTEND, FPS, [
     Systems::Display,
 
     Systems::Camera,
-  ]).start
+    Systems::CharacterSelect,
+  ])
+
+  app.start
 end

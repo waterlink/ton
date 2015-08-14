@@ -9,8 +9,13 @@ module Ton
       {% elsif name.ends_with?("=") %}
 
         {% original_name = name.gsub(%r{=$}, "") %}
-        {{args[0]}}.entity = self
-        @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::Just.new({{args.argify}})
+        if {{args[0]}}
+          {{args[0]}}.entity = self
+          @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::Just.new({{args.argify}})
+        else
+          {{args[0]}}.entity = nil
+          @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::None.new
+        end
 
       {% else %}
 

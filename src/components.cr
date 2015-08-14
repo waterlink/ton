@@ -5,4 +5,5 @@ module Ton
 
   new_component Player, value
   new_component Character, value
+  new_component SelectedCharacter, value
 end

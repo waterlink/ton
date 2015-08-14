@@ -18,6 +18,8 @@ module Ton
       update
       draw
       wait_for_frame
+    rescue e
+      p e
     end
 
     def update

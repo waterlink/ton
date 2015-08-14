@@ -25,7 +25,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 ## Roadmap
 
 - [x] Ability to move camera
-- [ ] Ability to select character
+- [x] Ability to select character
 - [ ] Show actions menu for selected character
 
 ## Contributing
