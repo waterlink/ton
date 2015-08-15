@@ -15,17 +15,15 @@ module Ton
       return if selected_character
       did_something = false
 
-      character.not_nil!.position.bind do |position|
-        return unless Position.same_position?(position, camera.not_nil!.position!)
-        character.not_nil!.selected_character = Components::SelectedCharacter.new(true)
-        did_something = true
+      World.each.character do |character|
+        character.position.bind do |position|
+          return unless Position.same_position?(position, camera.not_nil!.position!)
+          character.not_nil!.selected_character = Components::SelectedCharacter.new(true)
+          did_something = true
+        end
       end
 
       did_something
-    end
-
-    def character
-      World.each.character.first
     end
 
     def camera

@@ -1,12 +1,15 @@
 module Ton
   new_component Position, x, y
+
   new_component Tile, value
+  # .slot should be > 1
+  new_component Color, foreground, background, slot, initialized
+  new_component TileColor, slot
 
   new_component Camera, value
   new_component StaticCamera, value
   new_component UnstaticCamera, value
 
-  new_component Player, value
   new_component Character, value
   new_component SelectedCharacter, value
   new_component UnselectCharacter, value

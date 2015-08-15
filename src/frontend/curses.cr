@@ -19,6 +19,11 @@ module Ton
         1
       end
 
+      def init_color(color)
+        Curses.init_pair(color.slot, color.foreground, color.background)
+        color.initialized = true
+      end
+
       def set_color(pair)
         Curses.set_color(pair)
       end
