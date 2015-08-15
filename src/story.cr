@@ -12,6 +12,10 @@ module Ton
   Entity.new.color = Components::Color.new(YELLOW, BLACK, 3, false)
   Entity.new.color = Components::Color.new(CYAN, BLACK, 4, false)
 
+  status_bar = Entity.new
+  status_bar.status_bar = Components::StatusBar.new(true)
+  status_bar.status_bar_text = Components::StatusBarText.new("Welcome to Tactics of Nine!")
+
   player = Entity.new
   player.character = Components::Character.new(true)
   player.tile = Components::Tile.new("@")

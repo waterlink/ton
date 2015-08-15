@@ -30,9 +30,10 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Cancel selection action
 - [x] Move character action
 - [x] Ability to have multiple characters and move them around
-- [ ] Add status bar
+- [x] Add status bar
 - [ ] Add messages bar
 - [x] Disallow using any other object as a movement target
+- [ ] Fix flickering when multiple windows open
 
 ## Contributing
 

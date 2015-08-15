@@ -1,13 +1,8 @@
 module Ton
   new_system Movement do
-    def draw
-      return unless move_action?
-
-      # FIXME: should be in some sort of status bar
-      frontend.puts(1, 1, "Choose position to move")
-    end
-
     def update
+      status.text = "Choose position to move" if move_action?
+
       World.each.movement_target do |entity|
         entity.position.bind do |position|
           new_position = next_position(position, entity.movement_target!)
@@ -30,6 +25,7 @@ module Ton
 
       set_movement_target
       remove_move_action
+      status.text = ""
       true
     end
 
@@ -94,6 +90,10 @@ module Ton
 
     def camera
       World.each.camera.first
+    end
+
+    def status
+      World.each_component.status_bar_text.first
     end
   end
 end

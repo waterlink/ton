@@ -1,5 +1,7 @@
 module Ton
   module DisplayConstants
+    LEFT = 0
+    TOP = 4
     WIDTH = 50
     HEIGHT = 20
     EMPTY_TILE = "."
@@ -11,6 +13,13 @@ module Ton
     LEFT = 68
     RIGHT = 67
     ENTER = 13
+  end
+
+  module StatusBarConstants
+    LEFT = 0
+    TOP = 0
+    WIDTH = DisplayConstants::WIDTH
+    HEIGHT = DisplayConstants::TOP
   end
 
   DisplayRectangle = Rectangle.new(

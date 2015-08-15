@@ -11,7 +11,11 @@ module Ton
 
             if DisplayRectangle.contains?(x, y)
               entity.tile_color.bind { |c| frontend.set_color(c.slot) }
-              frontend.draw_tile(x, y, entity.tile!.value)
+              frontend.draw_tile(
+                x + DisplayConstants::LEFT,
+                y + DisplayConstants::TOP,
+                entity.tile!.value,
+              )
               frontend.reset_color
             end
           end
@@ -24,7 +28,11 @@ module Ton
     def _clear_screen
       (0..DisplayConstants::HEIGHT).each do |y|
         (0..DisplayConstants::WIDTH).each do |x|
-          frontend.draw_tile(x, y, DisplayConstants::EMPTY_TILE)
+          frontend.draw_tile(
+            x + DisplayConstants::LEFT,
+            y + DisplayConstants::TOP,
+            DisplayConstants::EMPTY_TILE,
+          )
         end
       end
     end

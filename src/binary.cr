@@ -10,6 +10,7 @@ module Ton
     Systems::Color,
     Systems::Display,
     Systems::Menu,
+    Systems::StatusBar,
 
     Systems::Movement,
 

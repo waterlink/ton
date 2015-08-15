@@ -108,7 +108,7 @@ module Ton
             DisplayConstants::HEIGHT / 2,
           )
 
-          menu.frontend_window = Components::FrontendWindow.new(window)
+          menu.frontend_window = Components::FrontendWindow.new(window.not_nil!)
           menu.active_window = Components::ActiveWindow.new(true)
         end
 

@@ -14,8 +14,8 @@ module Ton
 
       World.each.camera do |camera|
         frontend.highlight(
-          DisplayConstants::WIDTH / 2,
-          DisplayConstants::HEIGHT / 2,
+          DisplayConstants::WIDTH / 2 + DisplayConstants::LEFT,
+          DisplayConstants::HEIGHT / 2 + DisplayConstants::TOP,
         )
 
         return

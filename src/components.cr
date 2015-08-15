@@ -10,6 +10,9 @@ module Ton
   new_component StaticCamera, value
   new_component UnstaticCamera, value
 
+  new_component StatusBar, value
+  new_component StatusBarText, text
+
   new_component Character, value
   new_component SelectedCharacter, value
   new_component UnselectCharacter, value
