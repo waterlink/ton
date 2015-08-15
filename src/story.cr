@@ -16,24 +16,28 @@ module Ton
   player.character = Components::Character.new(true)
   player.tile = Components::Tile.new("@")
   player.position = Components::Position.new(9, 8)
+  player.blocks_movement = Components::BlocksMovement.new(true)
 
   player2 = Entity.new
   player2.character = Components::Character.new(true)
   player2.tile = Components::Tile.new("@")
   player2.tile_color = Components::TileColor.new(2)
   player2.position = Components::Position.new(10, 8)
+  player2.blocks_movement = Components::BlocksMovement.new(true)
 
   player3 = Entity.new
   player3.character = Components::Character.new(true)
   player3.tile = Components::Tile.new("@")
   player3.tile_color = Components::TileColor.new(3)
   player3.position = Components::Position.new(8, 8)
+  player3.blocks_movement = Components::BlocksMovement.new(true)
 
   player4 = Entity.new
   player4.character = Components::Character.new(true)
   player4.tile = Components::Tile.new("@")
   player4.tile_color = Components::TileColor.new(4)
   player4.position = Components::Position.new(9, 9)
+  player4.blocks_movement = Components::BlocksMovement.new(true)
 
   camera = Entity.new
   camera.camera = Components::Camera.new(true)

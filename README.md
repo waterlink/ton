@@ -32,7 +32,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Ability to have multiple characters and move them around
 - [ ] Add status bar
 - [ ] Add messages bar
-- [ ] Disallow using any other object as a movement target
+- [x] Disallow using any other object as a movement target
 
 ## Contributing
 

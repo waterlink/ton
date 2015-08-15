@@ -25,4 +25,5 @@ module Ton
 
   new_component MoveAction, value
   new_component MovementTarget, x, y
+  new_component BlocksMovement, value
 end

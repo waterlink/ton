@@ -26,10 +26,21 @@ module Ton
       return false unless key == ControlConstants::ENTER
       return false unless move_action?
       return false unless selected_character?
+      return false unless can_move_there?
 
       set_movement_target
       remove_move_action
       true
+    end
+
+    def can_move_there?
+      no = false
+      World.each.blocks_movement do |blocker|
+        blocker.position.bind do |position|
+          no ||= Position.same_position?(position, camera.position!)
+        end
+      end
+      !no
     end
 
     def next_position(position, target)
