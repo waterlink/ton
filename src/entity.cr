@@ -10,6 +10,10 @@ module Ton
 
         {% original_name = name.gsub(%r{=$}, "") %}
         if {{args[0]}}
+          if @_{{original_name.id}}
+            @_{{original_name.id}}.not_nil!.bind { |c| c.entity = nil }
+          end
+
           {{args[0]}}.entity = self
           @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::Just.new({{args.argify}})
         else

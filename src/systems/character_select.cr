@@ -1,9 +1,17 @@
 module Ton
   new_system CharacterSelect do
-    SPACE = 32
+    def update
+      World.each.unselect_character do |entity|
+        World.each.selected_character do |character|
+          character.selected_character = nil
+        end
+
+        entity.unselect_character = nil
+      end
+    end
 
     def keypress(key)
-      return unless key == SPACE
+      return unless key == ControlConstants::ENTER
       return if selected_character
 
       character.not_nil!.position.bind do |position|

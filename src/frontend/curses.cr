@@ -1,4 +1,5 @@
 require "../curses/curses"
+require "./window_wrapper"
 
 module Ton
   module Frontend
@@ -56,7 +57,9 @@ module Ton
       end
 
       def new_window(x, y, w, h)
-        Curses::Window.new(h, w, y, x)
+        WindowWrapper.new(
+          Curses::Window.new(h, w, y, x)
+        )
       end
 
       def box(w)
@@ -78,6 +81,7 @@ module Ton
       end
 
       def close(w)
+        w.close
       end
     end
   end

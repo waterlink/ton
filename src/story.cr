@@ -18,8 +18,7 @@ module Ton
     Components::MenuItem.new("Wait", false, nil),
     Components::MenuItem.new("Cancel", false, [
       -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
+      -> (e : Entity) { e.unselect_character = Components::UnselectCharacter.new(true); e },
     ]),
   ])
-  menu.active_menu = Components::ActiveMenu.new(true)
-  menu.active_window = Components::ActiveWindow.new(true)
 end

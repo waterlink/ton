@@ -22,6 +22,7 @@ module Ton
           menu.frontend_window.bind do |window|
             frontend.close(window.value)
           end
+          menu.frontend_window = nil
         end
 
         World.each.static_camera do |camera|

@@ -8,6 +8,7 @@ module Ton
   new_component Player, value
   new_component Character, value
   new_component SelectedCharacter, value
+  new_component UnselectCharacter, value
   new_component CharacterSelectionMenu, value
 
   new_component Menu, items
