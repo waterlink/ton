@@ -32,7 +32,7 @@ module Ton
 
     def keypress(key)
       return unless key
-      systems.each &.keypress(key.not_nil!)
+      systems.find &.keypress(key.not_nil!)
     end
 
     def wait_for_frame

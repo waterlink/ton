@@ -66,6 +66,11 @@ module Ton
         w.box('|', '=')
       end
 
+      def puts(x, y, text)
+        window.setpos(y, x)
+        window.addstr(text)
+      end
+
       def puts(w, x, y, text)
         w.setpos(y + 1, x + 2)
         w.addstr(text)

@@ -28,6 +28,10 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Ability to select character
 - [x] Show actions menu for selected character
 - [x] Cancel selection action
+- [x] Move character action
+- [ ] Ability to have multiple characters and move them around
+- [ ] Add status bar
+- [ ] Add messages bar
 
 ## Contributing
 

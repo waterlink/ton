@@ -4,6 +4,7 @@ module Ton
 
   new_component Camera, value
   new_component StaticCamera, value
+  new_component UnstaticCamera, value
 
   new_component Player, value
   new_component Character, value
@@ -18,4 +19,7 @@ module Ton
 
   new_component FrontendWindow, value
   new_component ActiveWindow, value
+
+  new_component MoveAction, value
+  new_component MovementTarget, x, y
 end

@@ -10,9 +10,13 @@ module Ton
     Systems::Display,
     Systems::Menu,
 
+    Systems::Movement,
+
     Systems::Camera,
     Systems::CharacterSelect,
     Systems::FrontendRefresh,
+
+    Systems::TurnFlow,
   ])
 
   begin

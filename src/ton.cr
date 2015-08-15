@@ -1,5 +1,6 @@
 require "./logger"
 require "./rectangle"
+require "./position"
 
 require "./constants"
 require "./application"

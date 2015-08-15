@@ -13,12 +13,15 @@ module Ton
     def keypress(key)
       return unless key == ControlConstants::ENTER
       return if selected_character
+      did_something = false
 
       character.not_nil!.position.bind do |position|
-        return unless same_position?(position, camera.not_nil!.position!)
+        return unless Position.same_position?(position, camera.not_nil!.position!)
         character.not_nil!.selected_character = Components::SelectedCharacter.new(true)
-        menu.active_menu = Components::ActiveMenu.new(true)
+        did_something = true
       end
+
+      did_something
     end
 
     def character
@@ -29,20 +32,12 @@ module Ton
       World.each.camera.first
     end
 
-    def menu
-      World.each.character_selection_menu.first
-    end
-
     def selected_character
       character = nil
       World.each.selected_character do |c|
         character = c
       end
       character
-    end
-
-    def same_position?(a, b)
-      a.x == b.x && a.y == b.y
     end
   end
 end

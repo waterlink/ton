@@ -6,6 +6,15 @@ module Ton
         {% original_name = name.gsub(%r{!$}, "") %}
         @_{{original_name.id}}.not_nil!.unwrap!
 
+      {% elsif name.ends_with?("?") %}
+
+        {% original_name = name.gsub(%r{\?$}, "") %}
+        result = false
+        self.{{original_name.id}}.bind do |x|
+          result = true
+        end
+        result
+
       {% elsif name.ends_with?("=") %}
 
         {% original_name = name.gsub(%r{=$}, "") %}

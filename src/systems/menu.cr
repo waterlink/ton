@@ -1,12 +1,12 @@
 module Ton
   new_system Menu do
     CONTROLS = {
-      ControlConstants::UP => (-> (m : Entity) { activate_item(m, -1); nil }),
-      ControlConstants::DOWN => (-> (m : Entity) { activate_item(m, +1); nil }),
-      ControlConstants::ENTER => (-> (m : Entity) { trigger(m); nil }),
+      ControlConstants::UP => (-> (m : Entity) { activate_item(m, -1); true }),
+      ControlConstants::DOWN => (-> (m : Entity) { activate_item(m, +1); true }),
+      ControlConstants::ENTER => (-> (m : Entity) { trigger(m); true }),
     }
 
-    NULL_CONTROL = -> (m : Entity) { nil }
+    NULL_CONTROL = -> (m : Entity) { false }
 
     def draw
       World.each.active_menu do |menu|
@@ -34,9 +34,11 @@ module Ton
     end
 
     def keypress(key)
+      did_something = false
       World.each.active_menu do |menu|
-        CONTROLS.fetch(key, NULL_CONTROL).call(menu)
+        did_something ||= CONTROLS.fetch(key, NULL_CONTROL).call(menu)
       end
+      did_something
     end
 
     def self.activate_item(menu, di)
