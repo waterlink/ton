@@ -38,6 +38,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Add simple enemy melee AI
 - [ ] Add selected character status (energy, health, name, etc)
 - [ ] Show total energy cost for a given action or movement
+- [ ] Allow for faster camera movement (with shift?)
+- [ ] Allow to jump between characters (with tab?)
 
 ## Contributing
 

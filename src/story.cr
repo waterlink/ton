@@ -22,7 +22,7 @@ module Ton
   player.position = Components::Position.new(9, 8)
   player.blocks_movement = Components::BlocksMovement.new(true)
   player.energy = Components::Energy.new(0, 100)
-  player.energy_restoration = Components::EnergyRestoration.new(0.1)
+  player.energy_restoration = Components::EnergyRestoration.new(0.4)
   player.movement_energy_cost = Components::MovementEnergyCost.new(20)
 
   player2 = Entity.new
@@ -32,7 +32,7 @@ module Ton
   player2.position = Components::Position.new(10, 8)
   player2.blocks_movement = Components::BlocksMovement.new(true)
   player2.energy = Components::Energy.new(0, 100)
-  player2.energy_restoration = Components::EnergyRestoration.new(0.1)
+  player2.energy_restoration = Components::EnergyRestoration.new(0.4)
   player2.movement_energy_cost = Components::MovementEnergyCost.new(20)
 
   player3 = Entity.new
@@ -42,7 +42,7 @@ module Ton
   player3.position = Components::Position.new(8, 8)
   player3.blocks_movement = Components::BlocksMovement.new(true)
   player3.energy = Components::Energy.new(0, 100)
-  player3.energy_restoration = Components::EnergyRestoration.new(0.1)
+  player3.energy_restoration = Components::EnergyRestoration.new(0.4)
   player3.movement_energy_cost = Components::MovementEnergyCost.new(20)
 
   player4 = Entity.new
@@ -52,7 +52,7 @@ module Ton
   player4.position = Components::Position.new(9, 9)
   player4.blocks_movement = Components::BlocksMovement.new(true)
   player4.energy = Components::Energy.new(0, 100)
-  player4.energy_restoration = Components::EnergyRestoration.new(0.1)
+  player4.energy_restoration = Components::EnergyRestoration.new(0.4)
   player4.movement_energy_cost = Components::MovementEnergyCost.new(20)
 
   camera = Entity.new
