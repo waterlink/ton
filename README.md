@@ -33,7 +33,9 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Add status bar
 - [ ] Add messages bar
 - [x] Disallow using any other object as a movement target
-- [ ] Fix flickering when multiple windows open
+- [ ] Fix flickering when multiple windows are open
+- [ ] Add energy concept: moving and acting takes energy; energy replenishes over time
+- [ ] Add simple enemy melee AI
 
 ## Contributing
 
