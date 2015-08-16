@@ -13,6 +13,12 @@ module Ton
   new_component StatusBar, value
   new_component StatusBarText, text
 
+  new_component CharacterStatus, value
+  new_component Name, value
+  new_component HealthStatus, value
+  new_component EnergyStatus, value
+  new_component ActionCostStatus, value
+
   new_component Character, value
   new_component SelectedCharacter, value
   new_component UnselectCharacter, value
@@ -33,4 +39,7 @@ module Ton
   new_component Energy, current, max
   new_component EnergyRestoration, value
   new_component MovementEnergyCost, value
+  new_component EnergyCost, value
+
+  new_component Health, current, max
 end

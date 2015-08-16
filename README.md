@@ -36,8 +36,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Fix flickering when multiple windows are open
 - [x] Add energy concept: moving and acting takes energy; energy replenishes over time
 - [ ] Add simple enemy melee AI
-- [ ] Add selected character status (energy, health, name, etc)
-- [ ] Show total energy cost for a given action or movement
+- [x] Add selected character status (energy, health, name, etc)
+- [x] Show total energy cost for a given action or movement
 - [ ] Allow for faster camera movement (with shift?)
 - [ ] Allow to jump between characters (with tab?)
 

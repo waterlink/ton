@@ -11,6 +11,7 @@ module Ton
     Systems::Display,
     Systems::Menu,
     Systems::StatusBar,
+    Systems::CharacterStatus,
 
     Systems::Movement,
     Systems::Energy,

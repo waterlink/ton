@@ -2,6 +2,8 @@ module Ton
   new_system Movement do
     def update
       status.text = "Choose position to move" if move_action?
+      calculate_energy_cost if move_action?
+      empty_energy_cost unless move_action?
 
       World.each.movement_target do |entity|
         entity.position.bind do |position|
@@ -38,6 +40,25 @@ module Ton
       unselect_character
       status.text = ""
       true
+    end
+
+    def calculate_energy_cost
+      return unless selected_character?
+      empty_energy_cost unless can_move_there?
+      cost = 0
+      selected_character.movement_energy_cost.bind do |movement_cost|
+        tiles = (selected_character.position!.x - camera.position!.x).abs
+        tiles += (selected_character.position!.y - camera.position!.y).abs
+        cost = tiles * movement_cost.value
+      end
+      selected_character.energy_cost = Components::EnergyCost.new(cost)
+    end
+
+    def empty_energy_cost
+      return unless selected_character?
+      selected_character.energy_cost.bind do |x|
+        selected_character.energy_cost = nil
+      end
     end
 
     def can_move_there?
