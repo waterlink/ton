@@ -13,6 +13,7 @@ module Ton
     Systems::StatusBar,
 
     Systems::Movement,
+    Systems::Energy,
 
     Systems::Camera,
     Systems::CharacterSelect,

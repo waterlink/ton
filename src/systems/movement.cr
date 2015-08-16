@@ -10,8 +10,18 @@ module Ton
           if Position.same_position?(position, new_position)
             entity.movement_target = nil
           else
-            position.x = new_position.x
-            position.y = new_position.y
+            can_move = true
+            entity.movement_energy_cost.bind do |cost|
+              entity.energy.bind do |energy|
+                can_move = energy.current >= cost.value
+                energy.current -= cost.value if can_move
+              end
+            end
+
+            if can_move
+              position.x = new_position.x
+              position.y = new_position.y
+            end
           end
         end
       end
@@ -25,6 +35,7 @@ module Ton
 
       set_movement_target
       remove_move_action
+      unselect_character
       status.text = ""
       true
     end
@@ -82,6 +93,12 @@ module Ton
         camera.position!.x,
         camera.position!.y,
       )
+    end
+
+    def unselect_character
+      World.each.selected_character do |character|
+        character.selected_character = nil
+      end
     end
 
     def selected_character

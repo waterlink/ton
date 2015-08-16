@@ -29,4 +29,8 @@ module Ton
   new_component MoveAction, value
   new_component MovementTarget, x, y
   new_component BlocksMovement, value
+
+  new_component Energy, current, max
+  new_component EnergyRestoration, value
+  new_component MovementEnergyCost, value
 end
