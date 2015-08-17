@@ -35,8 +35,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Ability to select character
 - [x] Ability to move camera
 - [x] Ability to have multiple characters and move them around
+- [x] Allow to jump between characters (with tab?)
 - [ ] Fix flickering when multiple windows are open
-- [ ] Allow to jump between characters (with tab?)
 - [ ] Allow for faster camera movement (with shift?)
 - [ ] Add simple enemy melee AI
 - [ ] Add messages bar
@@ -48,6 +48,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Add party world
 - [ ] Enable world-switching
 - [ ] Allow some entities to always stay in the current world
+- [ ] Add target status bar
 
 ## Contributing
 

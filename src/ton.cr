@@ -5,15 +5,15 @@ require "./position"
 require "./constants"
 require "./application"
 
-require "./system"
-require "./systems/*"
+require "./world"
 
 require "./entity"
 
 require "./component"
 require "./components"
 
-require "./world"
+require "./system"
+require "./systems/*"
 
 module Ton
 end

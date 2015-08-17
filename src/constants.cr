@@ -13,6 +13,7 @@ module Ton
     LEFT = 68
     RIGHT = 67
     ENTER = 13
+    TAB = 9
   end
 
   module StatusBarConstants
