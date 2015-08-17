@@ -24,7 +24,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
-- [ ] Even faster character switching with numbers (1-9)
+- [x] Even faster character switching with numbers (1-9)
 - [ ] Faster menu actions by capital letter
 - [ ] Faster enemy targetting (target closest in range with tab when in attack mode?)
 - [ ] Lose screen when all party is dead

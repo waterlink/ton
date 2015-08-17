@@ -3,6 +3,16 @@ module Ton
     CONTROLS = {
       ControlConstants::ENTER => -> (s : self) { s.select_character_under_camera },
       ControlConstants::TAB => -> (s : self) { s.select_next_character },
+
+      ControlConstants::NUM1 => -> (s : self) { s.select_character_by_number(1) },
+      ControlConstants::NUM2 => -> (s : self) { s.select_character_by_number(2) },
+      ControlConstants::NUM3 => -> (s : self) { s.select_character_by_number(3) },
+      ControlConstants::NUM4 => -> (s : self) { s.select_character_by_number(4) },
+      ControlConstants::NUM5 => -> (s : self) { s.select_character_by_number(5) },
+      ControlConstants::NUM6 => -> (s : self) { s.select_character_by_number(6) },
+      ControlConstants::NUM7 => -> (s : self) { s.select_character_by_number(7) },
+      ControlConstants::NUM8 => -> (s : self) { s.select_character_by_number(8) },
+      ControlConstants::NUM9 => -> (s : self) { s.select_character_by_number(9) },
     }
 
     NULL_CONTROL = -> (s : self) { false }
@@ -66,20 +76,32 @@ module Ton
         to_select = first_idle_character
       end
 
-      if to_select
+      move_camera_to(to_select)
+    end
+
+    def select_character_by_number(index)
+      to_select = nil
+      World.each.character do |character|
+        index -= 1
+        to_select = character if index == 0 && !character.dead?
+      end
+
+      move_camera_to(to_select)
+    end
+
+    def move_camera_to(character)
+      if character
         unselect_character
-        move_camera_to(to_select)
+
+        character.position.bind do |position|
+          camera.position!.x = position.x
+          camera.position!.y = position.y
+        end
+
         return true
       end
 
       false
-    end
-
-    def move_camera_to(character)
-      character.position.bind do |position|
-        camera.position!.x = position.x
-        camera.position!.y = position.y
-      end
     end
 
     def first_idle_character
