@@ -40,6 +40,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Add ability to attack an enemy
 - [x] Add target status bar
 - [x] Add simple enemy melee AI
+- [ ] Fast character switch only moves camera, but not actually selects
 - [ ] Fast character unselect (ESC keypress?)
 - [ ] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
 - [ ] Even faster character switching with numbers (1-9)
