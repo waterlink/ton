@@ -1,6 +1,8 @@
 module Ton
   new_system Attack do
     def update
+      remove_attack_action if attack_action? && !selected_character?
+
       status.text = "Choose tile to attack" if attack_action?
       status.text = "Can't attack there. Choose another tile to attack" if attack_action? && !can_attack_there?
       status.text = "Can't attack: not enough energy" if attack_action? && !enough_energy?
@@ -110,11 +112,16 @@ module Ton
     end
 
     def can_attack_there?
-      tiles = Position.tiles(selected_character.position!, camera.position!)
-      yes = tiles > 0
-      selected_character.attack_range.bind do |range|
-        yes = yes && tiles <= range.value
+      yes = false
+
+      selected_character.position.bind do |position|
+        tiles = Position.tiles(position, camera.position!)
+        yes = tiles > 0
+        selected_character.attack_range.bind do |range|
+          yes = yes && tiles <= range.value
+        end
       end
+
       yes
     end
 

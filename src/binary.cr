@@ -22,6 +22,8 @@ module Ton
     Systems::Death,
     Systems::Energy,
 
+    Systems::MeleeAi,
+
     Systems::Camera,
     Systems::CharacterSelect,
     Systems::FrontendRefresh,

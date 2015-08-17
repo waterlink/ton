@@ -39,7 +39,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Allow for faster camera movement (with shift?)
 - [x] Add ability to attack an enemy
 - [x] Add target status bar
-- [ ] Add simple enemy melee AI
+- [x] Add simple enemy melee AI
 - [ ] Fix flickering when multiple windows are open
 - [ ] Add messages bar
 - [ ] Add full-fledged world concept

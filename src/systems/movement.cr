@@ -1,6 +1,8 @@
 module Ton
   new_system Movement do
     def update
+      remove_move_action if move_action? && !selected_character?
+
       status.text = "Choose position to move" if move_action?
       status.text = "Can't move there. Choose another position to move" if !can_move_there? && move_action?
       calculate_energy_cost if move_action?
@@ -8,7 +10,10 @@ module Ton
 
       World.each.movement_target do |entity|
         entity.position.bind do |position|
-          new_position = next_position(position, entity.movement_target!)
+          new_position = Position.simple_next_position(
+            position,
+            entity.movement_target!,
+          )
 
           if Position.same_position?(position, new_position)
             entity.movement_target = nil
@@ -39,7 +44,6 @@ module Ton
       set_movement_target
       remove_move_action
       unselect_character
-      status.text = ""
       true
     end
 
@@ -48,8 +52,10 @@ module Ton
       empty_energy_cost unless can_move_there?
       cost = 0
       selected_character.movement_energy_cost.bind do |movement_cost|
-        tiles = Position.tiles(selected_character.position!, camera.position!)
-        cost = tiles * movement_cost.value
+        selected_character.position.bind do |position|
+          tiles = Position.tiles(position, camera.position!)
+          cost = tiles * movement_cost.value
+        end
       end
       movement_cost_estimate.energy_cost = Components::EnergyCost.new(cost)
     end
@@ -71,28 +77,6 @@ module Ton
       !no
     end
 
-    def next_position(position, target)
-      if position.x != target.x
-        return Components::Position.new(
-          position.x + sign(target.x - position.x),
-          position.y,
-        )
-      end
-
-      if position.y != target.y
-        return Components::Position.new(
-          position.x,
-          position.y + sign(target.y - position.y),
-        )
-      end
-
-      return position
-    end
-
-    def sign(x)
-      x / x.abs
-    end
-
     def move_action?
       yes = false
       World.each.move_action { |a| yes = true }
@@ -101,6 +85,7 @@ module Ton
 
     def remove_move_action
       World.each.move_action &.move_action = nil
+      status.text = ""
     end
 
     def selected_character?

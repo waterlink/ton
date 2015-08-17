@@ -8,6 +8,8 @@ module Ton
     NULL_CONTROL = -> (s : self) { false }
 
     def update
+      unselect_dead_character
+
       World.each.unselect_character do |entity|
         World.each.selected_character do |character|
           character.selected_character = nil
@@ -19,6 +21,14 @@ module Ton
 
     def keypress(key)
       CONTROLS.fetch(key, NULL_CONTROL).call(self)
+    end
+
+    def unselect_dead_character
+      return if unselect_character?
+      return unless selected_character?
+      return unless selected_character.dead?
+
+      Entity.new.unselect_character = Components::UnselectCharacter.new(true)
     end
 
     def select_character_under_camera
@@ -77,14 +87,15 @@ module Ton
     end
 
     def selected_character?
-      selected_character
-      true
-    rescue
-      false
+      World.each.selected_character.any?
     end
 
     def selected_character
       World.each.selected_character.first
+    end
+
+    def unselect_character?
+      World.each.unselect_character.any?
     end
   end
 end

@@ -59,6 +59,9 @@ module Ton
   new_component EnergyCostEstimate, value
 
   new_component Health, current, max
+  new_component Dead, value
 
   new_component Enemy, value
+  new_component MeleeAi, value
+  new_component AiTarget, value
 end
