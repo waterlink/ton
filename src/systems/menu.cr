@@ -37,8 +37,20 @@ module Ton
       did_something = false
       World.each.active_menu do |menu|
         did_something ||= CONTROLS.fetch(key, NULL_CONTROL).call(menu)
+        did_something ||= shortcuts(menu).fetch(key, NULL_CONTROL).call(menu)
       end
       did_something
+    end
+
+    def shortcuts(menu)
+      shortcuts = {} of Array(Int32) => (Entity) ->
+      menu.menu!.items.each_with_index do |item, i|
+        shortcut = [item.text[0].downcase.ord]
+        unless shortcuts.has_key?(shortcut)
+          shortcuts[shortcut] = -> (m : Entity) { self.class.trigger(m, i) }
+        end
+      end
+      shortcuts
     end
 
     def self.activate_item(menu, di)
@@ -70,6 +82,12 @@ module Ton
           component.call(e)
         end
       end
+    end
+
+    def self.trigger(menu, i)
+      menu.menu!.items[active_item(menu)].active = false
+      menu.menu!.items[i].active = true
+      trigger(menu)
     end
 
     class DrawMenu
