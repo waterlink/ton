@@ -33,6 +33,13 @@ module Ton
     HEIGHT = 6
   end
 
+  module TargetStatusConstants
+    LEFT = DisplayConstants::WIDTH
+    TOP = CharacterStatusConstants::HEIGHT + 2
+    WIDTH = 20
+    HEIGHT = 5
+  end
+
   DisplayRectangle = Rectangle.new(
     DisplayConstants::WIDTH,
     DisplayConstants::HEIGHT,

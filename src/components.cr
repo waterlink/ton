@@ -14,6 +14,7 @@ module Ton
   new_component StatusBarText, text
 
   new_component CharacterStatus, value
+  new_component TargetStatus, value
   new_component Name, value
   new_component HealthStatus, value
   new_component EnergyStatus, value

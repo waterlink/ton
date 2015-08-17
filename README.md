@@ -38,7 +38,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Allow to jump between characters (with tab?)
 - [x] Allow for faster camera movement (with shift?)
 - [x] Add ability to attack an enemy
-- [ ] Add target status bar
+- [x] Add target status bar
 - [ ] Add simple enemy melee AI
 - [ ] Fix flickering when multiple windows are open
 - [ ] Add messages bar

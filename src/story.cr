@@ -24,6 +24,12 @@ module Ton
   character_status.energy_status = Components::EnergyStatus.new("")
   character_status.action_cost_status = Components::ActionCostStatus.new("")
 
+  target_status = Entity.new
+  target_status.target_status = Components::TargetStatus.new(true)
+  target_status.name = Components::Name.new("")
+  target_status.health_status = Components::HealthStatus.new("")
+  target_status.energy_status = Components::EnergyStatus.new("")
+
   Entity.new.movement_cost_estimate = Components::MovementCostEstimate.new(true)
   Entity.new.attack_cost_estimate = Components::AttackCostEstimate.new(true)
 

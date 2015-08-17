@@ -14,6 +14,7 @@ module Ton
     Systems::Menu,
     Systems::StatusBar,
     Systems::CharacterStatus,
+    Systems::TargetStatus,
 
     Systems::Movement,
     Systems::Attack,
