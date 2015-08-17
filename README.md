@@ -70,6 +70,9 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Fix flickering when multiple windows are open
 - [ ] Movement system should avoid collisions
 - [ ] Story :: "Lone Survivor" - tutorial battle
+- [ ] Controls as part of CES
+- [ ] Options menu and options world
+- [ ] Configurable controls
 
 ## Contributing
 
