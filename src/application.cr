@@ -19,7 +19,7 @@ module Ton
       draw
       wait_for_frame
     rescue e
-      Logger.error e
+      Logger.error e.inspect
     end
 
     def update

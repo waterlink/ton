@@ -32,7 +32,7 @@ module Ton
       character_status.energy_status!.value = "EP: #{selected_character.energy!.current} / #{selected_character.energy!.max}"
 
       energy_cost = "---"
-      selected_character.energy_cost.bind { |e| energy_cost = e.value.to_s }
+      selected_character.energy_cost_estimate.bind { |e| energy_cost = e.value.to_s }
       character_status.action_cost_status!.value = "COST: #{energy_cost} EP"
     end
 

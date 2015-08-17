@@ -16,6 +16,9 @@ module Ton
     Systems::CharacterStatus,
 
     Systems::Movement,
+    Systems::Attack,
+    Systems::Damage,
+    Systems::Death,
     Systems::Energy,
 
     Systems::Camera,

@@ -11,6 +11,7 @@ module Ton
   Entity.new.color = Components::Color.new(GREEN, BLACK, 2, false)
   Entity.new.color = Components::Color.new(YELLOW, BLACK, 3, false)
   Entity.new.color = Components::Color.new(CYAN, BLACK, 4, false)
+  Entity.new.color = Components::Color.new(MAGENTA, BLACK, 5, false)
 
   status_bar = Entity.new
   status_bar.status_bar = Components::StatusBar.new(true)
@@ -23,6 +24,9 @@ module Ton
   character_status.energy_status = Components::EnergyStatus.new("")
   character_status.action_cost_status = Components::ActionCostStatus.new("")
 
+  Entity.new.movement_cost_estimate = Components::MovementCostEstimate.new(true)
+  Entity.new.attack_cost_estimate = Components::AttackCostEstimate.new(true)
+
   player = Entity.new
   player.name = Components::Name.new("Rex")
   player.character = Components::Character.new(true)
@@ -33,6 +37,10 @@ module Ton
   player.energy_restoration = Components::EnergyRestoration.new(0.4)
   player.movement_energy_cost = Components::MovementEnergyCost.new(20)
   player.health = Components::Health.new(100, 100)
+  player.attack_energy_cost = Components::AttackEnergyCost.new(60)
+  player.attack_range = Components::AttackRange.new(1)
+  player.damage = Components::Damage.new(20)
+  player.targettable = Components::Targettable.new(true)
 
   player2 = Entity.new
   player2.name = Components::Name.new("John")
@@ -45,6 +53,10 @@ module Ton
   player2.energy_restoration = Components::EnergyRestoration.new(0.4)
   player2.movement_energy_cost = Components::MovementEnergyCost.new(20)
   player2.health = Components::Health.new(100, 100)
+  player2.attack_energy_cost = Components::AttackEnergyCost.new(60)
+  player2.attack_range = Components::AttackRange.new(1)
+  player2.damage = Components::Damage.new(20)
+  player2.targettable = Components::Targettable.new(true)
 
   player3 = Entity.new
   player3.name = Components::Name.new("Sarah")
@@ -57,6 +69,10 @@ module Ton
   player3.energy_restoration = Components::EnergyRestoration.new(0.4)
   player3.movement_energy_cost = Components::MovementEnergyCost.new(20)
   player3.health = Components::Health.new(100, 100)
+  player3.attack_energy_cost = Components::AttackEnergyCost.new(60)
+  player3.attack_range = Components::AttackRange.new(3)
+  player3.damage = Components::Damage.new(15)
+  player3.targettable = Components::Targettable.new(true)
 
   player4 = Entity.new
   player4.name = Components::Name.new("Justin")
@@ -69,24 +85,57 @@ module Ton
   player4.energy_restoration = Components::EnergyRestoration.new(0.4)
   player4.movement_energy_cost = Components::MovementEnergyCost.new(20)
   player4.health = Components::Health.new(100, 100)
+  player4.attack_energy_cost = Components::AttackEnergyCost.new(60)
+  player4.attack_range = Components::AttackRange.new(1)
+  player4.damage = Components::Damage.new(20)
+  player4.targettable = Components::Targettable.new(true)
+
+  goblin = Entity.new
+  goblin.name = Components::Name.new("Tekka")
+  goblin.enemy = Components::Enemy.new(true)
+  goblin.tile = Components::Tile.new("g")
+  goblin.tile_color = Components::TileColor.new(5)
+  goblin.position = Components::Position.new(-5, 2)
+  goblin.blocks_movement = Components::BlocksMovement.new(true)
+  goblin.energy = Components::Energy.new(0, 100)
+  goblin.energy_restoration = Components::EnergyRestoration.new(0.25)
+  goblin.movement_energy_cost = Components::MovementEnergyCost.new(20)
+  goblin.health = Components::Health.new(50, 50)
+  goblin.targettable = Components::Targettable.new(true)
 
   camera = Entity.new
   camera.camera = Components::Camera.new(true)
   camera.position = Components::Position.new(5, 7)
 
-  menu = Entity.new
-  menu.character_selection_menu = Components::CharacterSelectionMenu.new(true)
-  menu.menu = Components::Menu.new([
+  character_selection_menu = Entity.new
+  character_selection_menu.character_selection_menu = Components::CharacterSelectionMenu.new(true)
+  character_selection_menu.menu = Components::Menu.new([
     Components::MenuItem.new("Move", true, [
       -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
       -> (e : Entity) { e.move_action = Components::MoveAction.new(true); e },
     ]),
-    Components::MenuItem.new("Act", false, nil),
+    Components::MenuItem.new("Act", false, [
+      -> (e : Entity) { e.activate_act_submenu = Components::ActivateActSubmenu.new(true); e },
+    ]),
     Components::MenuItem.new("Defend", false, nil),
     Components::MenuItem.new("Wait", false, nil),
     Components::MenuItem.new("Cancel", false, [
       -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
       -> (e : Entity) { e.unselect_character = Components::UnselectCharacter.new(true); e },
+    ]),
+  ])
+
+  act_submenu = Entity.new
+  act_submenu.act_submenu = Components::ActSubmenu.new(true)
+  act_submenu.menu = Components::Menu.new([
+    Components::MenuItem.new("Attack", true, [
+      -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
+      -> (e : Entity) { e.attack_action = Components::AttackAction.new(true); e },
+    ]),
+    Components::MenuItem.new("Skill", false, nil),
+    Components::MenuItem.new("Item", false, nil),
+    Components::MenuItem.new("Cancel", false, [
+      -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
     ]),
   ])
 end

@@ -2,6 +2,7 @@ module Ton
   new_system Movement do
     def update
       status.text = "Choose position to move" if move_action?
+      status.text = "Can't move there. Choose another position to move" if !can_move_there? && move_action?
       calculate_energy_cost if move_action?
       empty_energy_cost unless move_action?
 
@@ -47,17 +48,16 @@ module Ton
       empty_energy_cost unless can_move_there?
       cost = 0
       selected_character.movement_energy_cost.bind do |movement_cost|
-        tiles = (selected_character.position!.x - camera.position!.x).abs
-        tiles += (selected_character.position!.y - camera.position!.y).abs
+        tiles = Position.tiles(selected_character.position!, camera.position!)
         cost = tiles * movement_cost.value
       end
-      selected_character.energy_cost = Components::EnergyCost.new(cost)
+      movement_cost_estimate.energy_cost = Components::EnergyCost.new(cost)
     end
 
     def empty_energy_cost
       return unless selected_character?
-      selected_character.energy_cost.bind do |x|
-        selected_character.energy_cost = nil
+      movement_cost_estimate.energy_cost.bind do |x|
+        movement_cost_estimate.energy_cost = nil
       end
     end
 
@@ -132,6 +132,10 @@ module Ton
 
     def status
       World.each_component.status_bar_text.first
+    end
+
+    def movement_cost_estimate
+      World.each.movement_cost_estimate.first
     end
   end
 end

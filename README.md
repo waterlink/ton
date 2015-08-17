@@ -1,6 +1,6 @@
 # ton
 
-Tactics of Nine. Tactical RPG game.
+Tactics of Nine. Fast-paced top-down tactical RPG game.
 
 ## Installation
 
@@ -37,8 +37,10 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Ability to have multiple characters and move them around
 - [x] Allow to jump between characters (with tab?)
 - [x] Allow for faster camera movement (with shift?)
-- [ ] Fix flickering when multiple windows are open
+- [x] Add ability to attack an enemy
+- [ ] Add target status bar
 - [ ] Add simple enemy melee AI
+- [ ] Fix flickering when multiple windows are open
 - [ ] Add messages bar
 - [ ] Add full-fledged world concept
 - [ ] Put system list in the world
@@ -48,7 +50,18 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Add party world
 - [ ] Enable world-switching
 - [ ] Allow some entities to always stay in the current world
-- [ ] Add target status bar
+- [ ] Main menu world
+- [ ] Main menu :: Start new game
+- [ ] Pause menu world
+- [ ] Pause menu :: Save game
+- [ ] Main menu :: Load game
+- [ ] Fast character unselect (ESC keypress?)
+- [ ] Fast action cancel (ESC keypress?)
+- [ ] AoE attacks
+- [ ] Log all actions to message log
+- [ ] Better death/decay systems
+- [ ] Even faster character switching with numbers (1-9)
+- [ ] Faster menu actions by capital letter
 
 ## Contributing
 

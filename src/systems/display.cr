@@ -26,8 +26,8 @@ module Ton
     end
 
     def _clear_screen
-      (0..DisplayConstants::HEIGHT).each do |y|
-        (0..DisplayConstants::WIDTH).each do |x|
+      (0...DisplayConstants::HEIGHT).each do |y|
+        (0...DisplayConstants::WIDTH).each do |x|
           frontend.draw_tile(
             x + DisplayConstants::LEFT,
             y + DisplayConstants::TOP,
