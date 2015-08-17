@@ -18,6 +18,8 @@ module Ton
 
     Systems::Movement,
     Systems::Attack,
+    Systems::Idle,
+
     Systems::Damage,
     Systems::Death,
     Systems::Energy,

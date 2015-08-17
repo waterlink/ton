@@ -32,18 +32,23 @@ module Ton
     end
 
     def select_character_under_camera
-      return if selected_character?
-      did_something = false
+      return false if selected_character?
+      return false unless character_under_camera
 
+      character = character_under_camera.not_nil!
+      character.selected_character = Components::SelectedCharacter.new(true)
+      true
+    end
+
+    def character_under_camera
+      result = nil
       World.each.character do |character|
         character.position.bind do |position|
           return unless Position.same_position?(position, camera.not_nil!.position!)
-          character.not_nil!.selected_character = Components::SelectedCharacter.new(true)
-          did_something = true
+          result = character
         end
       end
-
-      did_something
+      result
     end
 
     def select_next_character
@@ -51,30 +56,38 @@ module Ton
       to_select = nil
 
       World.each.character do |character|
-        to_select = character if select_next
-        select_next = character.selected_character?
+        if !character.dead? && character.idle?
+          to_select = character if select_next
+          select_next = character.selected_character? || character == character_under_camera
+        end
       end
 
       unless to_select
-        to_select = World.each.character.first if World.each.character.any?
+        to_select = first_idle_character
       end
 
-      unselect_character
-
       if to_select
-        to_select.selected_character = Components::SelectedCharacter.new(true)
-        move_camera_to_selected_character
+        unselect_character
+        move_camera_to(to_select)
         return true
       end
 
       false
     end
 
-    def move_camera_to_selected_character
-      selected_character.position.bind do |position|
+    def move_camera_to(character)
+      character.position.bind do |position|
         camera.position!.x = position.x
         camera.position!.y = position.y
       end
+    end
+
+    def first_idle_character
+      result = nil
+      World.each.character do |character|
+        result ||= character if character.idle?
+      end
+      result
     end
 
     def unselect_character

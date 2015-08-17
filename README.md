@@ -40,7 +40,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Add ability to attack an enemy
 - [x] Add target status bar
 - [x] Add simple enemy melee AI
-- [ ] Fast character switch only moves camera, but not actually selects
+- [x] Fast character switch only moves camera, but not actually selects
+- [x] Fast character switch jumps to next idle character
 - [ ] Fast character unselect (ESC keypress?)
 - [ ] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
 - [ ] Even faster character switching with numbers (1-9)
@@ -54,8 +55,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Operate only on the world's entities/components
 - [ ] Add map overview world
 - [ ] Add battle world
-- [ ] Add party world
 - [ ] Enable world-switching
+- [ ] Add party world
 - [ ] Allow some entities to always stay in the current world
 - [ ] Main menu world
 - [ ] Main menu :: Start new game
@@ -66,6 +67,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Better death/decay systems
 - [ ] Custom win and lose conditions
 - [ ] Fix flickering when multiple windows are open
+- [ ] Movement system should avoid collisions
+- [ ] Story :: "Lone Survivor" - tutorial battle
 
 ## Contributing
 
