@@ -24,26 +24,6 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
-- [x] Show total energy cost for a given action or movement
-- [x] Show actions menu for selected character
-- [x] Move character action
-- [x] Disallow using any other object as a movement target
-- [x] Cancel selection action
-- [x] Add status bar
-- [x] Add selected character status (energy, health, name, etc)
-- [x] Add energy concept: moving and acting takes energy; energy replenishes over time
-- [x] Ability to select character
-- [x] Ability to move camera
-- [x] Ability to have multiple characters and move them around
-- [x] Allow to jump between characters (with tab?)
-- [x] Allow for faster camera movement (with shift?)
-- [x] Add ability to attack an enemy
-- [x] Add target status bar
-- [x] Add simple enemy melee AI
-- [x] Fast character switch only moves camera, but not actually selects
-- [x] Fast character switch jumps to next idle character
-- [x] Fast character unselect (ESC keypress?)
-- [x] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
 - [ ] Even faster character switching with numbers (1-9)
 - [ ] Faster menu actions by capital letter
 - [ ] Faster enemy targetting (target closest in range with tab when in attack mode?)
