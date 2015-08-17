@@ -21,6 +21,7 @@ module Ton
     ENTER = [13]
     TAB = [9]
     ESC = [27]
+    SPACE = [32]
 
     NUM0 = [48]
     NUM1 = [49]

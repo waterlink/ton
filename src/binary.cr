@@ -24,6 +24,7 @@ module Ton
     Systems::Death,
     Systems::Energy,
 
+    Systems::AutoTarget,
     Systems::MeleeAi,
 
     Systems::Camera,
