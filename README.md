@@ -24,22 +24,30 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
-- [x] Ability to move camera
-- [x] Ability to select character
-- [x] Show actions menu for selected character
-- [x] Cancel selection action
-- [x] Move character action
-- [x] Ability to have multiple characters and move them around
-- [x] Add status bar
-- [ ] Add messages bar
-- [x] Disallow using any other object as a movement target
-- [ ] Fix flickering when multiple windows are open
-- [x] Add energy concept: moving and acting takes energy; energy replenishes over time
-- [ ] Add simple enemy melee AI
-- [x] Add selected character status (energy, health, name, etc)
 - [x] Show total energy cost for a given action or movement
-- [ ] Allow for faster camera movement (with shift?)
+- [x] Show actions menu for selected character
+- [x] Move character action
+- [x] Disallow using any other object as a movement target
+- [x] Cancel selection action
+- [x] Add status bar
+- [x] Add selected character status (energy, health, name, etc)
+- [x] Add energy concept: moving and acting takes energy; energy replenishes over time
+- [x] Ability to select character
+- [x] Ability to move camera
+- [x] Ability to have multiple characters and move them around
+- [ ] Fix flickering when multiple windows are open
 - [ ] Allow to jump between characters (with tab?)
+- [ ] Allow for faster camera movement (with shift?)
+- [ ] Add simple enemy melee AI
+- [ ] Add messages bar
+- [ ] Add full-fledged world concept
+- [ ] Put system list in the world
+- [ ] Operate only on the world's entities/components
+- [ ] Add map overview world
+- [ ] Add battle world
+- [ ] Add party world
+- [ ] Enable world-switching
+- [ ] Allow some entities to always stay in the current world
 
 ## Contributing
 
