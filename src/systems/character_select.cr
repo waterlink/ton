@@ -86,7 +86,13 @@ module Ton
         to_select = character if index == 0 && !character.dead?
       end
 
-      move_camera_to(to_select)
+      move_camera_to(to_select) &&
+        select_character(to_select)
+    end
+
+    def select_character(character)
+      return unless character
+      character.selected_character = Components::SelectedCharacter.new(true)
     end
 
     def move_camera_to(character)

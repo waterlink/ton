@@ -26,7 +26,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 - [x] Even faster character switching with numbers (1-9)
 - [x] Faster menu actions by capital letter
-- [ ] Make numeric character switch auto-select character too
+- [x] Make numeric character switch auto-select character too
 - [ ] Faster enemy targetting (target closest in range with tab when in attack mode?)
 - [ ] Move character selection menu and act submenu to other part of the screen to be less obtrusive
 - [ ] Lose screen when all party is dead
