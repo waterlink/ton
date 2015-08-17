@@ -5,6 +5,11 @@ module Ton
       ControlConstants::DOWN => (-> (s : self) { s.down }),
       ControlConstants::LEFT => (-> (s : self) { s.left }),
       ControlConstants::RIGHT => (-> (s : self) { s.right }),
+
+      ControlConstants::SHIFT_UP => (-> (s : self) { s.up(5) }),
+      ControlConstants::SHIFT_DOWN => (-> (s : self) { s.down(5) }),
+      ControlConstants::SHIFT_LEFT => (-> (s : self) { s.left(5) }),
+      ControlConstants::SHIFT_RIGHT => (-> (s : self) { s.right(5) }),
     }
 
     NULL_CONTROL = -> (s : self) { false }
@@ -37,33 +42,27 @@ module Ton
       return unless camera?
 
       did_something = CONTROLS.fetch(key, NULL_CONTROL).call(self)
-      handle_possible_shift_sequence(key)
       did_something
     end
 
-    def up
-      camera.position!.y -= shift_pressed? ? 5 : 1
+    def up(value=1)
+      camera.position!.y -= value
       true
     end
 
-    def down
-      camera.position!.y += shift_pressed? ? 5 : 1
+    def down(value=1)
+      camera.position!.y += value
       true
     end
 
-    def left
-      camera.position!.x -= shift_pressed? ? 5 : 1
+    def left(value=1)
+      camera.position!.x -= value
       true
     end
 
-    def right
-      camera.position!.x += shift_pressed? ? 5 : 1
+    def right(value=1)
+      camera.position!.x += value
       true
-    end
-
-    def handle_possible_shift_sequence(key)
-      return reset_shift_sequence unless in_shift_sequence?(key)
-      advance_shift_sequence
     end
 
     def static?
@@ -80,27 +79,6 @@ module Ton
 
     def camera
       World.each.camera.first
-    end
-
-    def shift_pressed?
-      shift_sequence_index == ControlConstants::SHIFT_SEQUENCE.count
-    end
-
-    def in_shift_sequence?(key)
-      reset_shift_sequence if shift_pressed?
-      key == ControlConstants::SHIFT_SEQUENCE[shift_sequence_index]
-    end
-
-    def shift_sequence_index
-      (@_shift_sequence_index ||= 0).not_nil!
-    end
-
-    def advance_shift_sequence
-      @_shift_sequence_index = shift_sequence_index + 1
-    end
-
-    def reset_shift_sequence
-      @_shift_sequence_index = 0
     end
   end
 end

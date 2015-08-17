@@ -14,7 +14,7 @@ module Ton
     end
 
     def frame
-      keypress(frontend.get_key)
+      keypress(frontend.get_key_sequence)
       update
       draw
       wait_for_frame
@@ -31,7 +31,7 @@ module Ton
     end
 
     def keypress(key)
-      return unless key
+      return unless key.count > 0
       systems.find &.keypress(key.not_nil!)
     end
 

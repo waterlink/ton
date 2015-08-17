@@ -8,15 +8,19 @@ module Ton
   end
 
   module ControlConstants
-    UP = 65
-    DOWN = 66
-    LEFT = 68
-    RIGHT = 67
-    ENTER = 13
-    TAB = 9
+    UP = [27, 91, 65]
+    DOWN = [27, 91, 66]
+    LEFT = [27, 91, 68]
+    RIGHT = [27, 91, 67]
 
-    # TODO: verify if it is the same for all platforms and terminals
-    SHIFT_SEQUENCE = [27, 91, 49, 59, 50]
+    SHIFT_UP = [27, 91, 49, 59, 50, 65]
+    SHIFT_DOWN = [27, 91, 49, 59, 50, 66]
+    SHIFT_LEFT = [27, 91, 49, 59, 50, 68]
+    SHIFT_RIGHT = [27, 91, 49, 59, 50, 67]
+
+    ENTER = [13]
+    TAB = [9]
+    ESC = [27]
   end
 
   module StatusBarConstants

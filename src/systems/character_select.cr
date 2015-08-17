@@ -91,8 +91,9 @@ module Ton
     end
 
     def unselect_character
-      return unless selected_character?
+      return false unless selected_character?
       selected_character.selected_character = nil
+      true
     end
 
     def camera

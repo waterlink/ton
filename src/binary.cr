@@ -30,6 +30,7 @@ module Ton
     Systems::CharacterSelect,
     Systems::FrontendRefresh,
 
+    Systems::GlobalCancel,
     Systems::TurnFlow,
   ])
 

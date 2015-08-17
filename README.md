@@ -42,10 +42,11 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Add simple enemy melee AI
 - [x] Fast character switch only moves camera, but not actually selects
 - [x] Fast character switch jumps to next idle character
-- [ ] Fast character unselect (ESC keypress?)
-- [ ] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
+- [x] Fast character unselect (ESC keypress?)
+- [x] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
 - [ ] Even faster character switching with numbers (1-9)
 - [ ] Faster menu actions by capital letter
+- [ ] Faster enemy targetting (target closest in range with tab when in attack mode?)
 - [ ] Lose screen when all party is dead
 - [ ] Win screen when all enemies are dead
 - [ ] Add messages bar

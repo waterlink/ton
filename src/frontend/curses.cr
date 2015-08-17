@@ -86,6 +86,14 @@ module Ton
         return ch if ch > -1
       end
 
+      def get_key_sequence
+        seq = [] of Int32
+        while key = get_key
+          seq << key
+        end
+        seq
+      end
+
       def close
         Curses.close_screen
       end
