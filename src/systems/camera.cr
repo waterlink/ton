@@ -1,13 +1,13 @@
 module Ton
   new_system Camera do
     CONTROLS = {
-      ControlConstants::UP => (-> (c : Entity) { c.position!.y -= 1; true }),
-      ControlConstants::DOWN => (-> (c : Entity) { c.position!.y += 1; true }),
-      ControlConstants::LEFT => (-> (c : Entity) { c.position!.x -= 1; true }),
-      ControlConstants::RIGHT => (-> (c : Entity) { c.position!.x += 1; true }),
+      ControlConstants::UP => (-> (s : self) { s.up }),
+      ControlConstants::DOWN => (-> (s : self) { s.down }),
+      ControlConstants::LEFT => (-> (s : self) { s.left }),
+      ControlConstants::RIGHT => (-> (s : self) { s.right }),
     }
 
-    NULL_CONTROL = -> (c : Entity) { false }
+    NULL_CONTROL = -> (s : self) { false }
 
     def draw
       return if static?
@@ -34,13 +34,36 @@ module Ton
 
     def keypress(key)
       return if static?
-      did_something = false
+      return unless camera?
 
-      World.each.camera do |camera|
-        did_something ||= CONTROLS.fetch(key, NULL_CONTROL).call(camera)
-      end
-
+      did_something = CONTROLS.fetch(key, NULL_CONTROL).call(self)
+      handle_possible_shift_sequence(key)
       did_something
+    end
+
+    def up
+      camera.position!.y -= shift_pressed? ? 5 : 1
+      true
+    end
+
+    def down
+      camera.position!.y += shift_pressed? ? 5 : 1
+      true
+    end
+
+    def left
+      camera.position!.x -= shift_pressed? ? 5 : 1
+      true
+    end
+
+    def right
+      camera.position!.x += shift_pressed? ? 5 : 1
+      true
+    end
+
+    def handle_possible_shift_sequence(key)
+      return reset_shift_sequence unless in_shift_sequence?(key)
+      advance_shift_sequence
     end
 
     def static?
@@ -49,6 +72,35 @@ module Ton
         is_static = true
       end
       is_static
+    end
+
+    def camera?
+      World.each.camera.any?
+    end
+
+    def camera
+      World.each.camera.first
+    end
+
+    def shift_pressed?
+      shift_sequence_index == ControlConstants::SHIFT_SEQUENCE.count
+    end
+
+    def in_shift_sequence?(key)
+      reset_shift_sequence if shift_pressed?
+      key == ControlConstants::SHIFT_SEQUENCE[shift_sequence_index]
+    end
+
+    def shift_sequence_index
+      (@_shift_sequence_index ||= 0).not_nil!
+    end
+
+    def advance_shift_sequence
+      @_shift_sequence_index = shift_sequence_index + 1
+    end
+
+    def reset_shift_sequence
+      @_shift_sequence_index = 0
     end
   end
 end

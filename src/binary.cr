@@ -7,6 +7,8 @@ module Ton
   FRONTEND = Frontend::Driver.new
 
   app = Application.new(FRONTEND, FPS, [
+    Systems::Debug,
+
     Systems::Color,
     Systems::Display,
     Systems::Menu,

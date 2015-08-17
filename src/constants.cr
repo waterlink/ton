@@ -14,6 +14,9 @@ module Ton
     RIGHT = 67
     ENTER = 13
     TAB = 9
+
+    # TODO: verify if it is the same for all platforms and terminals
+    SHIFT_SEQUENCE = [27, 91, 49, 59, 50]
   end
 
   module StatusBarConstants

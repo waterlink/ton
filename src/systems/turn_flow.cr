@@ -6,7 +6,6 @@ module Ton
 
     def show_character_selection_menu
       return if character_selection_menu.active_menu?
-      Logger.debug "activating menu"
       character_selection_menu.active_menu = Components::ActiveMenu.new(true)
     end
 
