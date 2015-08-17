@@ -40,8 +40,14 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Add ability to attack an enemy
 - [x] Add target status bar
 - [x] Add simple enemy melee AI
-- [ ] Fix flickering when multiple windows are open
+- [ ] Fast character unselect (ESC keypress?)
+- [ ] Fast act/movement cancel (ESC keypress?), probably fast unselect should be enough
+- [ ] Even faster character switching with numbers (1-9)
+- [ ] Faster menu actions by capital letter
+- [ ] Lose screen when all party is dead
+- [ ] Win screen when all enemies are dead
 - [ ] Add messages bar
+- [ ] Log all actions to message bar log
 - [ ] Add full-fledged world concept
 - [ ] Put system list in the world
 - [ ] Operate only on the world's entities/components
@@ -55,13 +61,10 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [ ] Pause menu world
 - [ ] Pause menu :: Save game
 - [ ] Main menu :: Load game
-- [ ] Fast character unselect (ESC keypress?)
-- [ ] Fast action cancel (ESC keypress?)
 - [ ] AoE attacks
-- [ ] Log all actions to message log
 - [ ] Better death/decay systems
-- [ ] Even faster character switching with numbers (1-9)
-- [ ] Faster menu actions by capital letter
+- [ ] Custom win and lose conditions
+- [ ] Fix flickering when multiple windows are open
 
 ## Contributing
 
