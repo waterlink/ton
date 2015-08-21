@@ -9,6 +9,8 @@ module Ton
     NULL_CONTROL = -> (m : Entity) { false }
 
     def draw
+      clear_menus unless active_menu?
+
       World.each.active_menu do |menu|
         DrawMenu.new(frontend, menu).call
       end
@@ -53,6 +55,14 @@ module Ton
       shortcuts
     end
 
+    def active_menu?
+      World.each.active_menu.any?
+    end
+
+    def clear_menus
+      DrawMenu.new(frontend, World.each.menu.first).clear
+    end
+
     def self.activate_item(menu, di)
       return if len(menu) == 0
       old_active = active_item(menu)
@@ -91,8 +101,8 @@ module Ton
     end
 
     class DrawMenu
-      getter frontend, menu
-      def initialize(@frontend, @menu)
+      getter frontend, menu, auto_active
+      def initialize(@frontend, @menu, @auto_active = true)
       end
 
       def call
@@ -108,6 +118,13 @@ module Ton
         frontend.highlight(window, 0, active)
       end
 
+      def clear
+        (0..MenuConstants::HEIGHT).each do |y|
+          frontend.puts(window, 0, y, "" * MenuConstants::WIDTH)
+        end
+        frontend.box(window)
+      end
+
       def window
         (@_window ||= _window).not_nil!
       end
@@ -120,14 +137,14 @@ module Ton
 
         unless window
           window = frontend.new_window(
-            DisplayConstants::WIDTH / 4,
-            DisplayConstants::HEIGHT / 4,
-            DisplayConstants::WIDTH / 2,
-            DisplayConstants::HEIGHT / 2,
+            MenuConstants::LEFT,
+            MenuConstants::TOP,
+            MenuConstants::WIDTH,
+            MenuConstants::HEIGHT,
           )
 
           menu.frontend_window = Components::FrontendWindow.new(window.not_nil!)
-          menu.active_window = Components::ActiveWindow.new(true)
+          menu.active_window = Components::ActiveWindow.new(true) if auto_active
         end
 
         window

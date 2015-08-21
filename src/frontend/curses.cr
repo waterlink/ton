@@ -6,7 +6,7 @@ module Ton
     class Driver
       getter window
       def initialize
-        @window = Curses.stdscr
+        @window = WindowWrapper.new(Curses.stdscr)
         Curses.crmode
         Curses.noecho
         Curses.nonl
@@ -45,12 +45,26 @@ module Ton
         window.addstr(tile)
       end
 
+      def reset_pos
+        window.setpos(0, 0)
+      end
+
       def highlight(x, y)
-        window.setpos(y, x)
+        window.standout(y, x, 1, 0)
+      end
+
+      def current_highlight
+        y, x = window.current_pos
+        [x, y]
       end
 
       def highlight(w, x, y)
         w.setpos(y + 1, x + 2)
+      end
+
+      def current_highlight(w)
+        y, x = w.current_pos
+        [x - 2, y - 1]
       end
 
       def refresh

@@ -16,15 +16,11 @@ module Ton
 
     def draw
       return if static?
-
-      World.each.camera do |camera|
-        frontend.highlight(
-          DisplayConstants::WIDTH / 2 + DisplayConstants::LEFT,
-          DisplayConstants::HEIGHT / 2 + DisplayConstants::TOP,
-        )
-
-        return
-      end
+      return unless World.each.camera.any?
+      frontend.highlight(
+        DisplayConstants::WIDTH / 2 + DisplayConstants::LEFT,
+        DisplayConstants::HEIGHT / 2 + DisplayConstants::TOP,
+      )
     end
 
     def update

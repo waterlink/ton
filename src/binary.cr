@@ -33,6 +33,8 @@ module Ton
 
     Systems::GlobalCancel,
     Systems::TurnFlow,
+
+    Systems::HideCursor,
   ])
 
   begin

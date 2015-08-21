@@ -56,6 +56,13 @@ module Ton
     HEIGHT = 5
   end
 
+  module MenuConstants
+    LEFT = DisplayConstants::WIDTH
+    TOP = TargetStatusConstants::TOP + TargetStatusConstants::HEIGHT + 2
+    WIDTH = 20
+    HEIGHT = 10
+  end
+
   DisplayRectangle = Rectangle.new(
     DisplayConstants::WIDTH,
     DisplayConstants::HEIGHT,
