@@ -18,6 +18,9 @@ module Ton
       Systems::Death,
       Systems::Energy,
 
+      Systems::Lose,
+      Systems::Win,
+
       Systems::AutoTarget,
       Systems::MeleeAi,
 
@@ -41,14 +44,23 @@ module Ton
 
       Systems::FrontendRefresh,
 
-      Systems::GlobalCancel,
-
       Systems::HideCursor,
 
       Systems::Pause,
       Systems::UniverseReset,
       Systems::World,
       Systems::Quit,
+    ]
+
+    MapOverview = [
+      Systems::Debug,
+
+      Systems::Color,
+      Systems::Display,
+      Systems::Menu,
+      Systems::StatusBar,
+      Systems::CharacterStatus,
+      Systems::TargetStatus,
     ]
   end
 end

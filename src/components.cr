@@ -75,4 +75,7 @@ module Ton
 
   new_component ResetWorld, value
   new_component ResetUniverse, value
+
+  new_component LoseWorld, world
+  new_component WinWorld, world
 end

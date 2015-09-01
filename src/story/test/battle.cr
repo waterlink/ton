@@ -2,6 +2,8 @@ module Ton
   Universe.create(TEST_BATTLE_WORLD) do
 
     Entity.new.pausable = Components::Pausable.new(PAUSE_WORLD)
+    Entity.new.lose_world = Components::LoseWorld.new(LOSE_WORLD)
+    Entity.new.win_world = Components::WinWorld.new(WIN_WORLD)
 
     BLACK = 0
     RED = 1
