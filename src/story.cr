@@ -1,4 +1,9 @@
+require "./story/world_types"
+
 module Ton
+  test_battle_world = World.new(WorldTypes::BattleWorld)
+  Universe.switch_to(test_battle_world)
+
   BLACK = 0
   RED = 1
   GREEN = 2

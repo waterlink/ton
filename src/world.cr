@@ -14,8 +14,8 @@ module Ton
   end
 
   class World
-    getter systems, registry
-    def initialize(@systems = [] of System)
+    getter system_factories, registry
+    def initialize(@system_factories = [] of SystemFactory)
       @registry = RegistryRegistry.new
     end
 
@@ -25,6 +25,15 @@ module Ton
 
     def each_component
       EachComponent.new(self)
+    end
+
+    def init_if_required(frontend)
+      return if @systems
+      @systems = system_factories.map &.build(frontend)
+    end
+
+    def systems
+      @systems.not_nil!
     end
   end
 

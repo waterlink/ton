@@ -1,10 +1,9 @@
 module Ton
   class Application
-    getter frontend, fps, prev_frame, frame_size, systems, system_factories
-    def initialize(@frontend, @fps, @system_factories)
+    getter frontend, fps, prev_frame, frame_size
+    def initialize(@frontend, @fps)
       @prev_frame = now
       @frame_size = 1.0 / fps
-      @systems = system_factories.map &.build(frontend)
     end
 
     def start
@@ -14,6 +13,7 @@ module Ton
     end
 
     def frame
+      Universe.world.init_if_required(frontend)
       keypress(frontend.get_key_sequence)
       update
       draw
@@ -45,6 +45,10 @@ module Ton
 
     def now
       Time.now
+    end
+
+    def systems
+      Universe.world.systems
     end
   end
 end
