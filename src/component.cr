@@ -4,9 +4,9 @@ module Ton
     def entity=(entity)
       @entity = entity
       if entity
-        register
+        __register
       else
-        deregister
+        __deregister
       end
     end
 
@@ -21,15 +21,15 @@ module Ton
         def initialize({{props.map { |x| "@#{x}".id }.argify}})
         end
 
-        def register
-          world.registry.fetch_{{name.id}}.register(self)
+        def __register
+          __world.registry.fetch_{{name.id}}.register(self)
         end
 
-        def deregister
-          world.registry.fetch_{{name.id}}.deregister(self)
+        def __deregister
+          __world.registry.fetch_{{name.id}}.deregister(self)
         end
 
-        def world
+        def __world
           (@_world ||= Universe.world).not_nil!
         end
 

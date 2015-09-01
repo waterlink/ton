@@ -29,6 +29,26 @@ module Ton
       Systems::TurnFlow,
 
       Systems::HideCursor,
+
+      Systems::Pause,
+      Systems::World,
+      Systems::Quit,
+    ]
+
+    MenuWorld = [
+      Systems::Color,
+      Systems::Menu,
+
+      Systems::FrontendRefresh,
+
+      Systems::GlobalCancel,
+
+      Systems::HideCursor,
+
+      Systems::Pause,
+      Systems::UniverseReset,
+      Systems::World,
+      Systems::Quit,
     ]
   end
 end

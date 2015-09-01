@@ -13,7 +13,7 @@ module Ton
     end
 
     def frame
-      Universe.world.init_if_required(frontend)
+      set_current_world
       keypress(frontend.get_key_sequence)
       update
       draw
@@ -23,16 +23,16 @@ module Ton
     end
 
     def update
-      systems.each &.update
+      systems.each &.__update(same_world?)
     end
 
     def draw
-      systems.each &.draw
+      systems.each &.__draw(same_world?)
     end
 
     def keypress(key)
       return unless key.count > 0
-      systems.find &.keypress(key.not_nil!)
+      systems.find &.__keypress(same_world?, key.not_nil!)
     end
 
     def wait_for_frame
@@ -48,7 +48,16 @@ module Ton
     end
 
     def systems
+      Universe.world.init_if_required(frontend)
       Universe.world.systems
+    end
+
+    def set_current_world
+      @current_world = Universe.world
+    end
+
+    def same_world?
+      @current_world == Universe.world
     end
   end
 end

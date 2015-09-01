@@ -23,6 +23,8 @@ module Ton
     ESC = [27]
     SPACE = [32]
 
+    P = [112]
+
     NUM0 = [48]
     NUM1 = [49]
     NUM2 = [50]
