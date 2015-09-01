@@ -44,6 +44,12 @@ module Ton
     HEIGHT = DisplayConstants::TOP
   end
 
+  module MessagesBarConstants
+    LEFT = 0
+    TOP = DisplayConstants::TOP + DisplayConstants::HEIGHT
+    WIDTH = DisplayConstants::WIDTH
+  end
+
   module CharacterStatusConstants
     LEFT = DisplayConstants::WIDTH
     TOP = 0

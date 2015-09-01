@@ -125,7 +125,7 @@ module Ton
 
       def clear
         (0..MenuConstants::HEIGHT).each do |y|
-          frontend.puts(window, 0, y, "" * MenuConstants::WIDTH)
+          frontend.puts(window, 0, y, " " * MenuConstants::WIDTH)
         end
         frontend.box(window)
       end

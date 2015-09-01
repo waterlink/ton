@@ -38,9 +38,12 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Put system list in the world
 - [x] Win screen when all enemies are dead
 - [x] Lose screen when all party is dead
-- [ ] Add messages bar
-- [ ] Log all actions to message bar log
+- [x] Add messages bar
+- [x] Log all actions to message bar log
+- [ ] Render current movement target (as tile X?)
 - [ ] Add map overview world
+- [ ] Limit battle and map overview world size
+- [ ] Add terrain both to battle and map overview
 - [ ] Add party world
 - [ ] Allow some entities to always stay in the current world
 - [ ] AoE attacks

@@ -23,6 +23,9 @@ module Ton
     status_bar.status_bar = Components::StatusBar.new(true)
     status_bar.status_bar_text = Components::StatusBarText.new("Welcome to Tactics of Nine!")
 
+    status_bar = Entity.new
+    status_bar.messages_bar = Components::MessagesBar.new(10)
+
     character_status = Entity.new
     character_status.character_status = Components::CharacterStatus.new(true)
     character_status.name = Components::Name.new("")

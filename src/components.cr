@@ -13,6 +13,9 @@ module Ton
   new_component StatusBar, value
   new_component StatusBarText, text
 
+  new_component MessagesBar, size
+  new_component MessageLog, text
+
   new_component CharacterStatus, value
   new_component TargetStatus, value
   new_component Name, value

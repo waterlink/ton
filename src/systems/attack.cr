@@ -41,6 +41,7 @@ module Ton
       end
       spend_attack_cost
       remove_attack_action
+      log_attack_tile
       true
     end
 
@@ -50,6 +51,7 @@ module Ton
       end
       spend_attack_cost
       remove_attack_action
+      log_attack(targettable_under_camera.not_nil!)
       true
     end
 
@@ -155,6 +157,24 @@ module Ton
 
     def attack_cost_estimate
       world.each.attack_cost_estimate.first
+    end
+
+    def log_attack_tile
+      selected_character.name.bind do |name|
+        Entity.new.message_log = Components::MessageLog.new(
+          "#{name.value} blindly attacks <air>",
+        )
+      end
+    end
+
+    def log_attack(target)
+      selected_character.name.bind do |name|
+        target.name.bind do |target_name|
+          Entity.new.message_log = Components::MessageLog.new(
+            "#{name.value} attacks #{target_name.value}",
+          )
+        end
+      end
     end
   end
 end

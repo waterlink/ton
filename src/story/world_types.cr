@@ -7,6 +7,7 @@ module Ton
       Systems::Display,
       Systems::Menu,
       Systems::StatusBar,
+      Systems::MessageBar,
       Systems::CharacterStatus,
       Systems::TargetStatus,
 
@@ -59,6 +60,7 @@ module Ton
       Systems::Display,
       Systems::Menu,
       Systems::StatusBar,
+      Systems::MessageBar,
       Systems::CharacterStatus,
       Systems::TargetStatus,
     ]

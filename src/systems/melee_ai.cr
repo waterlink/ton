@@ -68,6 +68,8 @@ module Ton
               target.y,
               damage.value,
             )
+
+            log_attack
           end
         end
 
@@ -77,6 +79,7 @@ module Ton
       def set_ai_target(target)
         return if ai.ai_target? && target == ai.ai_target!.value
         ai.ai_target = Components::AiTarget.new(target)
+        log_target
       end
 
       def spend_energy
@@ -138,6 +141,28 @@ module Ton
           end
         end
         result
+      end
+
+      def log_attack
+        ai.name.bind do |name|
+          target = ai.ai_target!.value
+          target.name.bind do |target_name|
+            Entity.new.message_log = Components::MessageLog.new(
+              "#{name.value} attacks #{target_name.value}",
+            )
+          end
+        end
+      end
+
+      def log_target
+        ai.name.bind do |name|
+          target = ai.ai_target!.value
+          target.name.bind do |target_name|
+            Entity.new.message_log = Components::MessageLog.new(
+              "#{name.value} wants #{target_name.value} dead",
+            )
+          end
+        end
       end
     end
   end
