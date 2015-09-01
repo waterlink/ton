@@ -36,8 +36,8 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Operate only on the world's entities/components
 - [x] Pause menu world
 - [x] Put system list in the world
-- [ ] Win screen when all enemies are dead
-- [ ] Lose screen when all party is dead
+- [x] Win screen when all enemies are dead
+- [x] Lose screen when all party is dead
 - [ ] Add messages bar
 - [ ] Log all actions to message bar log
 - [ ] Add map overview world
