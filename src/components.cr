@@ -28,7 +28,7 @@ module Ton
 
   new_component ActSubmenu, value
 
-  new_component Menu, items
+  new_component Menu, name, items
   new_component MenuItem, text, active, action
   new_component ActiveMenu, value
   new_component CancelMenu, value

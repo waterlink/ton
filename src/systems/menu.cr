@@ -109,13 +109,18 @@ module Ton
         mark_camera_as_static
         frontend.box(window)
         active = -1
+        frontend.puts(window, 0, 0, "= #{name} =")
         menu.menu!.items.each_with_index do |item, i|
           frontend.set_color(window, frontend.black_on_white) if item.active
-          frontend.puts(window, 0, i, item.text)
+          frontend.puts(window, 0, i + 1, item.text)
           frontend.reset_color(window)
           active = i if item.active
         end
-        frontend.highlight(window, 0, active)
+        frontend.highlight(window, 0, active + 1)
+      end
+
+      def name
+        menu.menu!.name
       end
 
       def clear

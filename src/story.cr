@@ -153,7 +153,7 @@ module Ton
 
   character_selection_menu = Entity.new
   character_selection_menu.character_selection_menu = Components::CharacterSelectionMenu.new(true)
-  character_selection_menu.menu = Components::Menu.new([
+  character_selection_menu.menu = Components::Menu.new("Actions", [
     Components::MenuItem.new("Move", true, [
       -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
       -> (e : Entity) { e.move_action = Components::MoveAction.new(true); e },
@@ -171,7 +171,7 @@ module Ton
 
   act_submenu = Entity.new
   act_submenu.act_submenu = Components::ActSubmenu.new(true)
-  act_submenu.menu = Components::Menu.new([
+  act_submenu.menu = Components::Menu.new("Actions>Act", [
     Components::MenuItem.new("Attack", true, [
       -> (e : Entity) { e.cancel_menu = Components::CancelMenu.new(true); e },
       -> (e : Entity) { e.attack_action = Components::AttackAction.new(true); e },
