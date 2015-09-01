@@ -22,11 +22,15 @@ module Ton
         end
 
         def register
-          {{name.id}}Registry.register(self)
+          world.registry.fetch_{{name.id}}.register(self)
         end
 
         def deregister
-          {{name.id}}Registry.deregister(self)
+          world.registry.fetch_{{name.id}}.deregister(self)
+        end
+
+        def world
+          (@_world ||= Universe.world).not_nil!
         end
 
         class Just
@@ -52,8 +56,6 @@ module Ton
           end
         end
       end
-
-      {{name.id}}Registry = Registry({{name.id}}).new
     end
   end
 end
