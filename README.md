@@ -24,37 +24,37 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
+- [x] Add battle world
+- [x] Add full-fledged world concept
+- [x] Enable world-switching
 - [x] Even faster character switching with numbers (1-9)
-- [x] Faster menu actions by capital letter
-- [x] Make numeric character switch auto-select character too
 - [x] Faster enemy targetting (target closest in range with SPACE when in attack mode?)
+- [x] Faster menu actions by capital letter
+- [x] Main menu world
+- [x] Make numeric character switch auto-select character too
 - [x] Move character selection menu and act submenu to other part of the screen to be less obtrusive
-- [ ] Lose screen when all party is dead
+- [x] Operate only on the world's entities/components
+- [x] Pause menu world
+- [x] Put system list in the world
 - [ ] Win screen when all enemies are dead
+- [ ] Lose screen when all party is dead
 - [ ] Add messages bar
 - [ ] Log all actions to message bar log
-- [ ] Add full-fledged world concept
-- [ ] Put system list in the world
-- [ ] Operate only on the world's entities/components
 - [ ] Add map overview world
-- [ ] Add battle world
-- [ ] Enable world-switching
 - [ ] Add party world
 - [ ] Allow some entities to always stay in the current world
-- [ ] Main menu world
-- [ ] Main menu :: Start new game
-- [ ] Pause menu world
-- [ ] Pause menu :: Save game
-- [ ] Main menu :: Load game
 - [ ] AoE attacks
 - [ ] Better death/decay systems
+- [ ] Configurable controls
+- [ ] Controls as part of CES
 - [ ] Custom win and lose conditions
 - [ ] Fix flickering when multiple windows are open
+- [ ] Main menu :: Load game
+- [ ] Main menu :: Start new game
 - [ ] Movement system should avoid collisions
-- [ ] Story :: "Lone Survivor" - tutorial battle
-- [ ] Controls as part of CES
 - [ ] Options menu and options world
-- [ ] Configurable controls
+- [ ] Pause menu :: Save game
+- [ ] Story :: "Lone Survivor" - tutorial battle
 - [ ] Taking damage lowers down energy a bit
 
 ## Contributing
