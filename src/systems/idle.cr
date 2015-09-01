@@ -1,7 +1,7 @@
 module Ton
   new_system Idle do
     def update
-      World.each.character do |character|
+      world.each.character do |character|
         Activity.new(character).handle_idle
       end
     end

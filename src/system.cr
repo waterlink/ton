@@ -7,14 +7,33 @@ module Ton
     def update
     end
 
+    def __update(run)
+      return unless run
+      update
+    end
+
     def draw
+    end
+
+    def __draw(run)
+      return unless run
+      draw
     end
 
     def keypress(key)
     end
 
-    getter frontend
-    def initialize(@frontend)
+    def __keypress(run, key)
+      return unless run
+      keypress(key)
+    end
+
+    getter frontend, world
+    def initialize(@frontend, @world = get_current_world)
+    end
+
+    def self.get_current_world
+      Universe.world
     end
   end
 

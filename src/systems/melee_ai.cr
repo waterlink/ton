@@ -1,8 +1,8 @@
 module Ton
   new_system MeleeAi do
     def update
-      World.each.melee_ai do |ai|
-        AI.new(ai)
+      world.each.melee_ai do |ai|
+        AI.new(world, ai)
           .setup_target
           .follow
           .attack
@@ -10,8 +10,8 @@ module Ton
     end
 
     class AI
-      getter ai
-      def initialize(@ai)
+      getter world, ai
+      def initialize(@world, @ai)
       end
 
       # NOTE: Targets closest alive character
@@ -23,7 +23,7 @@ module Ton
         return self unless best_target
 
         best_tiles = Position.tiles(best_target.position!, ai.position!)
-        World.each.character do |character|
+        world.each.character do |character|
           unless character.dead?
             tiles = Position.tiles(character.position!, ai.position!)
             if tiles < best_tiles
@@ -116,7 +116,7 @@ module Ton
 
       def first_alive_character
         result = nil
-        World.each.character do |character|
+        world.each.character do |character|
           result ||= character unless character.dead?
         end
         result

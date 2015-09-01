@@ -11,14 +11,14 @@ module Ton
     def draw
       clear_menus unless active_menu?
 
-      World.each.active_menu do |menu|
-        DrawMenu.new(frontend, menu).call
+      world.each.active_menu do |menu|
+        DrawMenu.new(world, frontend, menu).call
       end
     end
 
     def update
-      World.each.cancel_menu do |cancel|
-        World.each.active_menu do |menu|
+      world.each.cancel_menu do |cancel|
+        world.each.active_menu do |menu|
           menu.active_menu = nil
           menu.active_window = nil
           menu.frontend_window.bind do |window|
@@ -27,7 +27,7 @@ module Ton
           menu.frontend_window = nil
         end
 
-        World.each.static_camera do |camera|
+        world.each.static_camera do |camera|
           camera.static_camera = nil
         end
 
@@ -37,7 +37,7 @@ module Ton
 
     def keypress(key)
       did_something = false
-      World.each.active_menu do |menu|
+      world.each.active_menu do |menu|
         did_something ||= CONTROLS.fetch(key, NULL_CONTROL).call(menu)
         did_something ||= shortcuts(menu).fetch(key, NULL_CONTROL).call(menu)
       end
@@ -56,11 +56,11 @@ module Ton
     end
 
     def active_menu?
-      World.each.active_menu.any?
+      world.each.active_menu.any?
     end
 
     def clear_menus
-      DrawMenu.new(frontend, World.each.menu.first).clear
+      DrawMenu.new(world, frontend, world.each.menu.first).clear
     end
 
     def self.activate_item(menu, di)
@@ -101,8 +101,8 @@ module Ton
     end
 
     class DrawMenu
-      getter frontend, menu, auto_active
-      def initialize(@frontend, @menu, @auto_active = true)
+      getter world, frontend, menu, auto_active
+      def initialize(@world, @frontend, @menu, @auto_active = true)
       end
 
       def call
@@ -156,7 +156,7 @@ module Ton
       end
 
       def mark_camera_as_static
-        World.each.camera do |camera|
+        world.each.camera do |camera|
           already_static = false
           camera.static_camera.bind do |x|
             already_static = true

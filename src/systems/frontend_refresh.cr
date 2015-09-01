@@ -2,7 +2,7 @@ module Ton
   new_system FrontendRefresh do
     def draw
       refreshed = false
-      World.each.active_window do |entity|
+      world.each.active_window do |entity|
         entity.frontend_window.bind do |window|
           frontend.refresh(window.value)
           refreshed = true

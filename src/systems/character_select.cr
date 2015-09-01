@@ -20,8 +20,8 @@ module Ton
     def update
       unselect_dead_character
 
-      World.each.unselect_character do |entity|
-        World.each.selected_character do |character|
+      world.each.unselect_character do |entity|
+        world.each.selected_character do |character|
           character.selected_character = nil
         end
 
@@ -52,7 +52,7 @@ module Ton
 
     def character_under_camera
       result = nil
-      World.each.character do |character|
+      world.each.character do |character|
         character.position.bind do |position|
           return unless Position.same_position?(position, camera.not_nil!.position!)
           result = character
@@ -65,7 +65,7 @@ module Ton
       select_next = !selected_character?
       to_select = nil
 
-      World.each.character do |character|
+      world.each.character do |character|
         if !character.dead? && character.idle?
           to_select = character if select_next
           select_next = character.selected_character? || character == character_under_camera
@@ -81,7 +81,7 @@ module Ton
 
     def select_character_by_number(index)
       to_select = nil
-      World.each.character do |character|
+      world.each.character do |character|
         index -= 1
         to_select = character if index == 0 && !character.dead?
       end
@@ -112,7 +112,7 @@ module Ton
 
     def first_idle_character
       result = nil
-      World.each.character do |character|
+      world.each.character do |character|
         result ||= character if character.idle?
       end
       result
@@ -125,19 +125,19 @@ module Ton
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
 
     def selected_character?
-      World.each.selected_character.any?
+      world.each.selected_character.any?
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def unselect_character?
-      World.each.unselect_character.any?
+      world.each.unselect_character.any?
     end
   end
 end

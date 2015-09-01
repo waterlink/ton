@@ -32,39 +32,39 @@ module Ton
     end
 
     def act_submenu_activated?
-      World.each.activate_act_submenu.any?
+      world.each.activate_act_submenu.any?
     end
 
     def activate_act_submenu
-      World.each.activate_act_submenu.first
+      world.each.activate_act_submenu.first
     end
 
     def act_submenu
-      World.each.act_submenu.first
+      world.each.act_submenu.first
     end
 
     def active_menu?
-      World.each.active_menu.any?
+      world.each.active_menu.any?
     end
 
     def selected_character?
-      World.each.selected_character.any?
+      world.each.selected_character.any?
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def move_action?
-      World.each.move_action.any?
+      world.each.move_action.any?
     end
 
     def attack_action?
-      World.each.attack_action.any?
+      world.each.attack_action.any?
     end
 
     def character_selection_menu
-      World.each.character_selection_menu.first
+      world.each.character_selection_menu.first
     end
   end
 end

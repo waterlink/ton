@@ -10,7 +10,7 @@ module Ton
     def auto_target_next_enemy_in_range
       target = nil
       select_next = false
-      World.each.enemy do |enemy|
+      world.each.enemy do |enemy|
         next if enemy.dead?
         next unless in_range?(enemy)
 
@@ -49,7 +49,7 @@ module Ton
 
     def first_alive_enemy_in_range
       result = nil
-      World.each.enemy do |enemy|
+      world.each.enemy do |enemy|
         next if enemy.dead?
         next unless in_range?(enemy)
 
@@ -70,19 +70,19 @@ module Ton
     end
 
     def attack_action?
-      World.each.attack_action.any?
+      world.each.attack_action.any?
     end
 
     def selected_character?
-      World.each.selected_character.any?
+      world.each.selected_character.any?
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
   end
 end

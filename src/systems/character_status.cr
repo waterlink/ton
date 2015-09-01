@@ -44,11 +44,11 @@ module Ton
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def character_status
-      World.each.character_status.first
+      world.each.character_status.first
     end
 
     def window

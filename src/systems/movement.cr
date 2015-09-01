@@ -8,7 +8,7 @@ module Ton
       calculate_energy_cost if move_action?
       empty_energy_cost unless move_action?
 
-      World.each.movement_target do |entity|
+      world.each.movement_target do |entity|
         entity.position.bind do |position|
           new_position = Position.simple_next_position(
             position,
@@ -69,7 +69,7 @@ module Ton
 
     def can_move_there?
       no = false
-      World.each.blocks_movement do |blocker|
+      world.each.blocks_movement do |blocker|
         blocker.position.bind do |position|
           no ||= Position.same_position?(position, camera.position!)
         end
@@ -79,18 +79,18 @@ module Ton
 
     def move_action?
       yes = false
-      World.each.move_action { |a| yes = true }
+      world.each.move_action { |a| yes = true }
       yes
     end
 
     def remove_move_action
-      World.each.move_action &.move_action = nil
+      world.each.move_action &.move_action = nil
       status.text = ""
     end
 
     def selected_character?
       yes = false
-      World.each.selected_character { |c| yes = true }
+      world.each.selected_character { |c| yes = true }
       yes
     end
 
@@ -102,25 +102,25 @@ module Ton
     end
 
     def unselect_character
-      World.each.selected_character do |character|
+      world.each.selected_character do |character|
         character.selected_character = nil
       end
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
 
     def status
-      World.each_component.status_bar_text.first
+      world.each_component.status_bar_text.first
     end
 
     def movement_cost_estimate
-      World.each.movement_cost_estimate.first
+      world.each.movement_cost_estimate.first
     end
   end
 end

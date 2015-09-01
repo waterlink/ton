@@ -65,4 +65,14 @@ module Ton
   new_component Enemy, value
   new_component MeleeAi, value
   new_component AiTarget, value
+
+  new_component Quit, value
+  new_component SwitchToWorld, world
+
+  new_component Pausable, world
+  new_component PausedWorld, world
+  new_component Unpause, value
+
+  new_component ResetWorld, value
+  new_component ResetUniverse, value
 end

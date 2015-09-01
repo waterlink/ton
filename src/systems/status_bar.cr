@@ -31,11 +31,11 @@ module Ton
     end
 
     def status
-      World.each_component.status_bar_text.first
+      world.each_component.status_bar_text.first
     end
 
     def status_bar
-      World.each.status_bar.first
+      world.each.status_bar.first
     end
   end
 end

@@ -16,7 +16,7 @@ module Ton
 
     def draw
       return if static?
-      return unless World.each.camera.any?
+      return unless world.each.camera.any?
       frontend.highlight(
         DisplayConstants::WIDTH / 2 + DisplayConstants::LEFT,
         DisplayConstants::HEIGHT / 2 + DisplayConstants::TOP,
@@ -24,8 +24,8 @@ module Ton
     end
 
     def update
-      World.each.unstatic_camera do |action|
-        World.each.static_camera do |entity|
+      world.each.unstatic_camera do |action|
+        world.each.static_camera do |entity|
           entity.static_camera = nil
         end
 
@@ -63,18 +63,18 @@ module Ton
 
     def static?
       is_static = false
-      World.each.static_camera do |c|
+      world.each.static_camera do |c|
         is_static = true
       end
       is_static
     end
 
     def camera?
-      World.each.camera.any?
+      world.each.camera.any?
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
   end
 end

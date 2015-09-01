@@ -6,7 +6,7 @@ module Ton
     end
 
     def handle_restoration
-      World.each.energy_restoration do |entity|
+      world.each.energy_restoration do |entity|
         entity.energy.bind do |energy|
           energy.current += entity.energy_restoration!.value
           energy.current = energy.max if energy.current > energy.max
@@ -18,7 +18,7 @@ module Ton
       return empty_cost_estimate unless selected_character?
 
       total_cost = 0
-      World.each_component.energy_cost do |cost|
+      world.each_component.energy_cost do |cost|
         total_cost += cost.value
       end
 
@@ -31,17 +31,17 @@ module Ton
     end
 
     def empty_cost_estimate
-      World.each.energy_cost_estimate do |e|
+      world.each.energy_cost_estimate do |e|
         e.energy_cost_estimate = nil
       end
     end
 
     def selected_character?
-      World.each.selected_character.any?
+      world.each.selected_character.any?
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
   end
 end
