@@ -13,8 +13,12 @@ module Ton
     def keypress(key)
     end
 
-    getter frontend
-    def initialize(@frontend)
+    getter frontend, world
+    def initialize(@frontend, @world = get_current_world)
+    end
+
+    def self.get_current_world
+      Universe.world
     end
   end
 

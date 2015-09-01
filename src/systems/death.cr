@@ -1,7 +1,7 @@
 module Ton
   new_system Death do
     def update
-      World.each.health do |e|
+      world.each.health do |e|
         if !e.dead? && e.health!.current <= 0
           # FIXME: very primitive version of death used
           e.position.bind do |x|

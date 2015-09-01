@@ -3,8 +3,8 @@ module Ton
     def draw
       _clear_screen
 
-      World.each.camera do |camera|
-        World.each.tile do |entity|
+      world.each.camera do |camera|
+        world.each.tile do |entity|
           entity.position.bind do |position|
             x = position.x - camera.position!.x + DisplayConstants::WIDTH / 2
             y = position.y - camera.position!.y + DisplayConstants::HEIGHT / 2

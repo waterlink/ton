@@ -10,8 +10,8 @@ module Ton
       calculate_energy_cost if attack_action?
       empty_energy_cost unless attack_action?
 
-      World.each_component.attack_tile_target do |attack|
-        World.each.targettable do |targettable|
+      world.each_component.attack_tile_target do |attack|
+        world.each.targettable do |targettable|
           targettable.position.bind do |position|
             if Position.same_position?(position, attack)
               attack_targettable(targettable, attack.damage)
@@ -70,7 +70,7 @@ module Ton
     end
 
     def remove_attack_action
-      World.each.attack_action do |e|
+      world.each.attack_action do |e|
         e.attack_action = nil
       end
 
@@ -90,7 +90,7 @@ module Ton
     end
 
     def attack_action?
-      World.each.attack_action.any?
+      world.each.attack_action.any?
     end
 
     def calculate_energy_cost
@@ -127,7 +127,7 @@ module Ton
 
     def targettable_under_camera
       result = nil
-      World.each.targettable do |targettable|
+      world.each.targettable do |targettable|
         targettable.position.bind do |position|
           if Position.same_position?(position, camera.position!)
             result = targettable
@@ -138,23 +138,23 @@ module Ton
     end
 
     def selected_character?
-      World.each.selected_character.any?
+      world.each.selected_character.any?
     end
 
     def selected_character
-      World.each.selected_character.first
+      world.each.selected_character.first
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
 
     def status
-      World.each_component.status_bar_text.first
+      world.each_component.status_bar_text.first
     end
 
     def attack_cost_estimate
-      World.each.attack_cost_estimate.first
+      world.each.attack_cost_estimate.first
     end
   end
 end

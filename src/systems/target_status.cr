@@ -57,7 +57,7 @@ module Ton
 
     def targettable
       result = nil
-      World.each.targettable do |entity|
+      world.each.targettable do |entity|
         entity.position.bind do |position|
           if Position.same_position?(position, camera.position!)
             result = entity
@@ -68,11 +68,11 @@ module Ton
     end
 
     def target_status
-      World.each.target_status.first
+      world.each.target_status.first
     end
 
     def camera
-      World.each.camera.first
+      world.each.camera.first
     end
   end
 end
