@@ -5,15 +5,6 @@ module Ton
     Entity.new.lose_world = Components::LoseWorld.new(LOSE_WORLD)
     Entity.new.win_world = Components::WinWorld.new(WIN_WORLD)
 
-    BLACK = 0
-    RED = 1
-    GREEN = 2
-    YELLOW = 3
-    BLUE = 4
-    MAGENTA = 5
-    CYAN = 6
-    WHITE = 7
-
     Entity.new.color = Components::Color.new(GREEN, BLACK, 2, false)
     Entity.new.color = Components::Color.new(YELLOW, BLACK, 3, false)
     Entity.new.color = Components::Color.new(CYAN, BLACK, 4, false)
@@ -23,8 +14,8 @@ module Ton
     status_bar.status_bar = Components::StatusBar.new(true)
     status_bar.status_bar_text = Components::StatusBarText.new("Welcome to Tactics of Nine!")
 
-    status_bar = Entity.new
-    status_bar.messages_bar = Components::MessagesBar.new(10)
+    messages_bar = Entity.new
+    messages_bar.messages_bar = Components::MessagesBar.new(10)
 
     character_status = Entity.new
     character_status.character_status = Components::CharacterStatus.new(true)
@@ -194,6 +185,7 @@ module Ton
     camera = Entity.new
     camera.camera = Components::Camera.new(true)
     camera.position = Components::Position.new(5, 7)
+    camera.highlight = Components::Highlight.new(true)
 
     character_selection_menu = Entity.new
     character_selection_menu.character_selection_menu = Components::CharacterSelectionMenu.new(true)

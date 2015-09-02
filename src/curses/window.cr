@@ -24,7 +24,7 @@ struct Curses::Window
       y,
       x,
       n,
-      LibCurses::Attribute::STANDOUT,
+      LibCurses::Attribute::BOLD,
       color_pair.to_i16,
       nil,
     )

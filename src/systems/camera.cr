@@ -16,7 +16,9 @@ module Ton
 
     def draw
       return if static?
-      return unless world.each.camera.any?
+      return unless camera?
+      return unless camera.highlight?
+
       frontend.highlight(
         DisplayConstants::WIDTH / 2 + DisplayConstants::LEFT,
         DisplayConstants::HEIGHT / 2 + DisplayConstants::TOP,

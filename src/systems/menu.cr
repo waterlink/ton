@@ -60,6 +60,7 @@ module Ton
     end
 
     def clear_menus
+      return unless world.each.menu.any?
       DrawMenu.new(world, frontend, world.each.menu.first).clear
     end
 

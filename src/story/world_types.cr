@@ -63,6 +63,19 @@ module Ton
       Systems::MessageBar,
       Systems::CharacterStatus,
       Systems::TargetStatus,
+
+      Systems::MovementByCamera,
+
+      Systems::Camera,
+      Systems::CharacterSelect,
+      Systems::FrontendRefresh,
+
+      Systems::HideCursor,
+
+      Systems::Pause,
+      Systems::UniverseReset,
+      Systems::World,
+      Systems::Quit,
     ]
   end
 end

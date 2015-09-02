@@ -8,6 +8,7 @@ module Ton
   new_component TileColor, slot
 
   new_component Camera, value
+  new_component Highlight, value
   new_component StaticCamera, value
   new_component UnstaticCamera, value
 

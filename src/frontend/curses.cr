@@ -53,18 +53,8 @@ module Ton
         window.standout(y, x, 1, 0)
       end
 
-      def current_highlight
-        y, x = window.current_pos
-        [x, y]
-      end
-
       def highlight(w, x, y)
-        w.setpos(y + 1, x + 2)
-      end
-
-      def current_highlight(w)
-        y, x = w.current_pos
-        [x - 2, y - 1]
+        w.standout(y + 1, x + 2, 1, 0)
       end
 
       def refresh
