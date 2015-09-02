@@ -24,7 +24,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
-- [ ] Render current movement target (as tile X?)
+- [x] Render current movement target (as tile X?)
 - [ ] Fix map overview world (missing entities for relevant systems)
 - [ ] Limit battle and map overview world size
 - [ ] Add terrain both to battle and map overview

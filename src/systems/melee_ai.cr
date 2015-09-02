@@ -42,12 +42,24 @@ module Ton
         return self unless target_alive?
         return remove_movement_target if in_attack_range?
 
-        ai.ai_target!.value.position.bind do |target|
-          unless same_target?(target)
-            ai.movement_target = Components::MovementTarget.new(
-              target.x,
-              target.y,
-            )
+        ai.ai_target!.value.position.bind do |position|
+          target = Components::Position.new(*plus_minus_one(
+            position.x,
+            position.y,
+          ))
+
+          unless same_target?
+            remove_movement_target
+
+            e = Entity.new
+            e.position = Components::Position.new(target.x, target.y)
+            e.tile = Components::Tile.new("x")
+            ai.tile_color.bind do |color|
+              e.tile_color = Components::TileColor.new(color.slot)
+            end
+            e.low_tile = Components::LowTile.new(true)
+
+            ai.movement_target = Components::MovementTarget.new(target.x, target.y, e)
           end
         end
 
@@ -93,6 +105,12 @@ module Ton
 
       def remove_movement_target
         ai.movement_target.bind do |x|
+          e = x.tile
+          e.position = nil
+          e.tile = nil
+          e.tile_color = nil
+          e.low_tile = nil
+
           ai.movement_target = nil
         end
         self
@@ -108,9 +126,14 @@ module Ton
         result
       end
 
-      def same_target?(target)
+      def same_target?
         return false unless ai.movement_target?
-        Position.same_position?(ai.movement_target!, target)
+        return false unless ai.ai_target?
+        return false unless ai.ai_target!.value.position?
+
+        target = ai.movement_target!
+        position = ai.ai_target!.value.position!
+        Position.tiles(target, position) == 1
       end
 
       def alive?
@@ -141,6 +164,14 @@ module Ton
           end
         end
         result
+      end
+
+      def plus_minus_one(x, y)
+        if rand < 0.5
+          {x, y + ((rand(2)-0.5)*2).to_i}
+        else
+          {x + ((rand(2)-0.5)*2).to_i, y}
+        end
       end
 
       def log_attack

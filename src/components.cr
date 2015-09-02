@@ -2,6 +2,7 @@ module Ton
   new_component Position, x, y
 
   new_component Tile, value
+  new_component LowTile, value
   # .slot should be > 1
   new_component Color, foreground, background, slot, initialized
   new_component TileColor, slot
@@ -42,7 +43,7 @@ module Ton
   new_component ActiveWindow, value
 
   new_component MoveAction, value
-  new_component MovementTarget, x, y
+  new_component MovementTarget, x, y, tile
   new_component BlocksMovement, value
   new_component MovementEnergyCost, value
   new_component MovementCostEstimate, value

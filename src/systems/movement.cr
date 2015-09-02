@@ -16,7 +16,7 @@ module Ton
           )
 
           if Position.same_position?(position, new_position)
-            entity.movement_target = nil
+            clear_movement_target(entity)
           else
             can_move = true
             entity.movement_energy_cost.bind do |cost|
@@ -95,10 +95,35 @@ module Ton
     end
 
     def set_movement_target
-      selected_character.movement_target = Components::MovementTarget.new(
+      e = Entity.new
+      e.position = Components::Position.new(
         camera.position!.x,
         camera.position!.y,
       )
+      e.tile = Components::Tile.new("x")
+      selected_character.tile_color.bind do |color|
+        e.tile_color = Components::TileColor.new(color.slot)
+      end
+      e.blocks_movement = Components::BlocksMovement.new(true)
+      e.low_tile = Components::LowTile.new(true)
+
+      selected_character.movement_target = Components::MovementTarget.new(
+        camera.position!.x,
+        camera.position!.y,
+        e,
+      )
+    end
+
+    def clear_movement_target(e)
+      tile = e.movement_target!.tile
+      if tile
+        tile.position = nil
+        tile.tile = nil
+        tile.tile_color = nil
+        tile.blocks_movement = nil
+        tile.low_tile = nil
+      end
+      e.movement_target = nil
     end
 
     def unselect_character

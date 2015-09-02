@@ -26,8 +26,10 @@ module Ton
           {{args[0]}}.entity = self
           @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::Just.new({{args.argify}})
         else
-          @_{{original_name.id}}.not_nil!.unwrap!.entity = nil
-          @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::None.new
+          self.{{original_name.id}}.bind do |component|
+            component.entity = nil
+            @_{{original_name.id}} = Components::{{original_name.camelcase.id}}::None.new
+          end
         end
 
       {% else %}
