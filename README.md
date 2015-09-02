@@ -24,41 +24,29 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 
 ## Roadmap
 
-- [x] Add battle world
-- [x] Add full-fledged world concept
-- [x] Enable world-switching
-- [x] Even faster character switching with numbers (1-9)
-- [x] Faster enemy targetting (target closest in range with SPACE when in attack mode?)
-- [x] Faster menu actions by capital letter
-- [x] Main menu world
-- [x] Make numeric character switch auto-select character too
-- [x] Move character selection menu and act submenu to other part of the screen to be less obtrusive
-- [x] Operate only on the world's entities/components
-- [x] Pause menu world
-- [x] Put system list in the world
-- [x] Win screen when all enemies are dead
-- [x] Lose screen when all party is dead
-- [x] Add messages bar
-- [x] Log all actions to message bar log
 - [ ] Render current movement target (as tile X?)
-- [ ] Add map overview world
+- [ ] Fix map overview world (missing entities for relevant systems)
 - [ ] Limit battle and map overview world size
 - [ ] Add terrain both to battle and map overview
 - [ ] Add party world
-- [ ] Allow some entities to always stay in the current world
+- [ ] Extract stats (for now: DMG, MAXHP, EPRGN) as independent from character
+- [ ] Allow some entities to always stay in the current world (stats, for example)
+- [ ] Movement system should avoid collisions
+- [ ] Pause menu :: Save game
+- [ ] Main menu :: Load game (Continue)
+- [ ] Main menu :: Start new game
+- [ ] Taking damage lowers down energy a bit
+- [ ] Story :: "Lone Survivor" - tutorial battle, +one party member joins
+- [ ] Dialog system - for conversations between characters and enemies, and for tutorial
+- [ ] Story :: "Through the Forest" - tutorial map overview + party screen
 - [ ] AoE attacks
+- [ ] Story :: "Edgar the Goblin" - tutorial/challenging boss battle (shouldn't be possible to finish with 1 character, maybe add goblin healer)
 - [ ] Better death/decay systems
-- [ ] Configurable controls
-- [ ] Controls as part of CES
 - [ ] Custom win and lose conditions
 - [ ] Fix flickering when multiple windows are open
-- [ ] Main menu :: Load game
-- [ ] Main menu :: Start new game
-- [ ] Movement system should avoid collisions
 - [ ] Options menu and options world
-- [ ] Pause menu :: Save game
-- [ ] Story :: "Lone Survivor" - tutorial battle
-- [ ] Taking damage lowers down energy a bit
+- [ ] Controls as part of CES
+- [ ] Configurable controls
 
 ## Contributing
 
