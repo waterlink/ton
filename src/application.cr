@@ -31,7 +31,7 @@ module Ton
     end
 
     def keypress(key)
-      return unless key.count > 0
+      return unless key.size > 0
       systems.find &.__keypress(same_world?, key.not_nil!)
     end
 

@@ -12,7 +12,7 @@ module Ton
     end
 
     def logs(size)
-      logs_count = world.each.message_log.count
+      logs_count = world.each.message_log.size
       start = -[logs_count, size].min
       world.each.message_log.to_a[start..-1]
     end

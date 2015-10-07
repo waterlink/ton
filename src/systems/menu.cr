@@ -81,7 +81,7 @@ module Ton
     end
 
     def self.len(menu)
-      menu.menu!.items.count
+      menu.menu!.items.size
     end
 
     def self.trigger(menu)
