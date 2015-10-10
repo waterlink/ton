@@ -33,6 +33,8 @@ module Ton
 
         action.unstatic_camera = nil
       end
+
+      restore_camera
     end
 
     def keypress(key)
@@ -40,6 +42,7 @@ module Ton
       return unless camera?
 
       did_something = CONTROLS.fetch(key, NULL_CONTROL).call(self)
+      restore_camera
       did_something
     end
 
@@ -63,6 +66,15 @@ module Ton
       true
     end
 
+    def restore_camera
+      return unless boundaries?
+
+      camera.position!.x = [camera.position!.x, boundaries.x].max
+      camera.position!.y = [camera.position!.y, boundaries.y].max
+      camera.position!.x = [camera.position!.x, boundaries.x + boundaries.w - 1].min
+      camera.position!.y = [camera.position!.y, boundaries.y + boundaries.h - 1].min
+    end
+
     def static?
       is_static = false
       world.each.static_camera do |c|
@@ -77,6 +89,14 @@ module Ton
 
     def camera
       world.each.camera.first
+    end
+
+    def boundaries?
+      world.each_component.boundaries.any?
+    end
+
+    def boundaries
+      world.each_component.boundaries.first
     end
   end
 end

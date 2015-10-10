@@ -12,6 +12,8 @@ module Ton
   new_component StaticCamera, value
   new_component UnstaticCamera, value
 
+  new_component Boundaries, x, y, w, h
+
   new_component StatusBar, value
   new_component StatusBarText, text
 
