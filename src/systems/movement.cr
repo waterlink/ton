@@ -15,7 +15,9 @@ module Ton
             entity.movement_target!,
           )
 
-          if Position.same_position?(position, new_position)
+          if something_blocking_at?(new_position)
+            clear_movement_target(entity)
+          elsif Position.same_position?(position, new_position)
             clear_movement_target(entity)
           else
             can_move = true
@@ -104,7 +106,6 @@ module Ton
       selected_character.tile_color.bind do |color|
         e.tile_color = Components::TileColor.new(color.slot)
       end
-      e.blocks_movement = Components::BlocksMovement.new(true)
       e.low_tile = Components::LowTile.new(true)
 
       selected_character.movement_target = Components::MovementTarget.new(
@@ -146,6 +147,20 @@ module Ton
 
     def movement_cost_estimate
       world.each.movement_cost_estimate.first
+    end
+
+    def something_blocking_at?(position)
+      yes = false
+
+      world.each.blocks_movement do |entity|
+        entity.position.bind do |other_position|
+          yes = true if Position.same_position?(position, other_position)
+        end
+
+        break if yes
+      end
+
+      yes
     end
   end
 end

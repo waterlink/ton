@@ -50,16 +50,7 @@ module Ton
 
           unless same_target?
             remove_movement_target
-
-            e = Entity.new
-            e.position = Components::Position.new(target.x, target.y)
-            e.tile = Components::Tile.new("x")
-            ai.tile_color.bind do |color|
-              e.tile_color = Components::TileColor.new(color.slot)
-            end
-            e.low_tile = Components::LowTile.new(true)
-
-            ai.movement_target = Components::MovementTarget.new(target.x, target.y, e)
+            ai.movement_target = Components::MovementTarget.new(target.x, target.y, Entity.new)
           end
         end
 
