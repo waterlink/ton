@@ -165,23 +165,6 @@ module Ton
     goblin4.targettable = Components::Targettable.new(true)
     goblin4.melee_ai = Components::MeleeAi.new(true)
 
-    goblin5 = Entity.new
-    goblin5.name = Components::Name.new("Dumak")
-    goblin5.enemy = Components::Enemy.new(true)
-    goblin5.tile = Components::Tile.new("g")
-    goblin5.tile_color = Components::TileColor.new(5)
-    goblin5.position = Components::Position.new(-3, 3)
-    goblin5.blocks_movement = Components::BlocksMovement.new(true)
-    goblin5.energy = Components::Energy.new(0, 100)
-    goblin5.energy_restoration = Components::EnergyRestoration.new(0.25)
-    goblin5.movement_energy_cost = Components::MovementEnergyCost.new(1)
-    goblin5.health = Components::Health.new(50, 50)
-    goblin5.attack_energy_cost = Components::AttackEnergyCost.new(70)
-    goblin5.attack_range = Components::AttackRange.new(2)
-    goblin5.damage = Components::Damage.new(15)
-    goblin5.targettable = Components::Targettable.new(true)
-    goblin5.melee_ai = Components::MeleeAi.new(true)
-
     camera = Entity.new
     camera.camera = Components::Camera.new(true)
     camera.position = Components::Position.new(5, 7)
@@ -219,5 +202,75 @@ module Ton
       ]),
     ])
 
+    Entity.new.terrain = Components::Terrain.new(-50, -25, 5, 4, [
+      "####################",
+      "#..................#",
+      "#.....--------.....#",
+      "#.....:............#",
+      "#..---/...\\........#",
+      "#..........|.......#",
+      "#....##....|.......#",
+      "#...........\\......#",
+      "#............\\.....#",
+      "#..................#",
+      "####################",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('.', [
+      ".....",
+      ".....",
+      ".....",
+      ".....",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('#', [
+      "#####",
+      "#####",
+      "#####",
+      "#####",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('-', [
+      ".....",
+      ".....",
+      "#####",
+      ".....",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('|', [
+      "..#..",
+      "..#..",
+      "..#..",
+      "..#..",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('\\', [
+      "##...",
+      ".##..",
+      "..##.",
+      "...##",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('/', [
+      "...##",
+      "..##.",
+      ".##..",
+      "##...",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new(':', [
+      ".###.",
+      ".....",
+      ".....",
+      ".###.",
+    ])
+
+    Entity.new.terrain_sub_tile = Components::TerrainSubTile.new('#', -> (e : Entity) {
+      e.name = Components::Name.new("Rock wall")
+      e.tile = Components::Tile.new("#")
+      e.tile_color = Components::TileColor.new(0)
+      e.blocks_movement = Components::BlocksMovement.new(true)
+      nil
+    })
   end
 end

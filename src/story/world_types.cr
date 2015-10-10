@@ -4,6 +4,7 @@ module Ton
       Systems::Debug,
 
       Systems::Color,
+      Systems::Terrain,
       Systems::Display,
       Systems::Menu,
       Systems::StatusBar,
