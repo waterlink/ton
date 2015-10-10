@@ -43,5 +43,76 @@ module Ton
     camera.camera = Components::Camera.new(true)
     camera.position = Components::Position.new(5, 7)
     camera.highlight = Components::Highlight.new(true)
+
+    Entity.new.terrain = Components::Terrain.new(-50, -25, 5, 4, [
+      "####################",
+      "#..................#",
+      "#.....--------.....#",
+      "#.....:............#",
+      "#..---/...\\........#",
+      "#..........|.......#",
+      "#....##....|.......#",
+      "#...........\\......#",
+      "#............\\.....#",
+      "#..................#",
+      "####################",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('.', [
+      ".....",
+      ".....",
+      ".....",
+      ".....",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('#', [
+      "#####",
+      "#####",
+      "#####",
+      "#####",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('-', [
+      ".....",
+      ".....",
+      "#####",
+      ".....",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('|', [
+      "..#..",
+      "..#..",
+      "..#..",
+      "..#..",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('\\', [
+      "##...",
+      ".##..",
+      "..##.",
+      "...##",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new('/', [
+      "...##",
+      "..##.",
+      ".##..",
+      "##...",
+    ])
+
+    Entity.new.terrain_tile = Components::TerrainTile.new(':', [
+      ".###.",
+      ".....",
+      ".....",
+      ".###.",
+    ])
+
+    Entity.new.terrain_sub_tile = Components::TerrainSubTile.new('#', -> (e : Entity) {
+      e.name = Components::Name.new("Rock wall")
+      e.tile = Components::Tile.new("#")
+      e.tile_color = Components::TileColor.new(0)
+      e.blocks_movement = Components::BlocksMovement.new(true)
+      nil
+    })
   end
 end

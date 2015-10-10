@@ -83,4 +83,8 @@ module Ton
 
   new_component LoseWorld, world
   new_component WinWorld, world
+
+  new_component Terrain, x, y, tw, th, lines
+  new_component TerrainTile, tile, lines
+  new_component TerrainSubTile, tile, value
 end
