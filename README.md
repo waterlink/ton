@@ -29,7 +29,7 @@ Use normal TDD cycle. To run tests: `crystal spec`.
 - [x] Limit battle and map overview world size
 - [x] Add terrain both to battle and map overview
 - [x] Movement system should avoid collisions
-- [ ] Make path-finding smarter
+- [x] Make path-finding smarter
 - [ ] Add party world
 - [ ] Extract stats (for now: DMG, MAXHP, EPRGN) as independent from character
 - [ ] Allow some entities to always stay in the current world (stats, for example)
