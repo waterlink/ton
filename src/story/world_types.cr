@@ -12,6 +12,7 @@ module Ton
       Systems::CharacterStatus,
       Systems::TargetStatus,
 
+      Systems::PathFinder,
       Systems::Movement,
       Systems::Attack,
       Systems::Idle,

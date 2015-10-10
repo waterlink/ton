@@ -47,6 +47,7 @@ module Ton
 
   new_component MoveAction, value
   new_component MovementTarget, x, y, tile
+  new_component MovementPath, waypoints
   new_component BlocksMovement, value
   new_component MovementEnergyCost, value
   new_component MovementCostEstimate, value

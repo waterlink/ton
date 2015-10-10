@@ -8,12 +8,9 @@ module Ton
       calculate_energy_cost if move_action?
       empty_energy_cost unless move_action?
 
-      world.each.movement_target do |entity|
+      world.each.movement_path do |entity|
         entity.position.bind do |position|
-          new_position = Position.simple_next_position(
-            position,
-            entity.movement_target!,
-          )
+          new_position = entity.movement_path!.waypoints.shift
 
           if something_blocking_at?(new_position)
             clear_movement_target(entity)
@@ -31,6 +28,8 @@ module Ton
             if can_move
               position.x = new_position.x
               position.y = new_position.y
+            else
+              entity.movement_path!.waypoints.unshift(new_position)
             end
           end
         end
